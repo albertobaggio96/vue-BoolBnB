@@ -19,7 +19,7 @@
                         <router-link :to="{ name: 'show'}" class="nav-link"> show </router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link :to="{ name: 'search'}" class="nav-link"> search </router-link>
+                        <router-link :to="{ name: 'search'}" class="nav-link"> results </router-link>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
