@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "./pages/HomePage.vue";
 import PropertyShow from "./pages/PropertyShow.vue";
 import SearchPage from "./pages/SearchPage.vue";
+import AllPropertyPage from "./pages/AllPropertyPage";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -21,6 +22,11 @@ const router = createRouter({
             path: '/search',
             name: 'search',
             component: SearchPage
+        },
+        {
+            path: '/all',
+            name: 'all',
+            component: AllPropertyPage
         },
     ]
 })
