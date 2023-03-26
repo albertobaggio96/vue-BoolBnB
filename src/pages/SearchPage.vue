@@ -3,17 +3,20 @@ import {store} from '../store.js'
 import axios from 'axios';
 
 import CardProperty from '../components/shered-components/CardProperty.vue';
+import ServiceSelection from '../components/SearchPage/ServiceSelection.vue';
+
 export default {
     name: 'searchPage',
     components:{
-        CardProperty
+        CardProperty,
+        ServiceSelection
     },
     data() {
         return {
             store,
             properties: null,
             services: null,
-
+            servicesFilter : [],
         }
     },
     methods:{
@@ -29,7 +32,7 @@ export default {
              ]
             //  richiama le due chiamate axios in un array
              axios.all(requests).then((responses) => {
-                console.log(responses[0].data.results)
+                console.log(responses[1].data.results)
                 // il primo risultato è il prodotto della prima chiamata (le proprietà)
                 this.properties = responses[0].data.results
                 // il secondo risultato è il prodotto della seconda chiamata (la tabella servizi)
@@ -41,6 +44,9 @@ export default {
              .finally(function () {
                // always executed
              });  
+        },
+        getServicesFilter(services){
+            this.servicesFilter = services;
         }
     },
     created(){
@@ -52,7 +58,15 @@ export default {
 <template >
     <main>
         <h1>search</h1>
-        <section class="row">
+
+        <!-- sezione della selezione dei servizi -->
+        <section id="services-selection" class="row">
+            <ServiceSelection :services="services" @servicesFilter="getServicesFilter"/>
+        </section>
+        <div>{{ servicesFilter }}</div>
+
+        <!-- risultato delle proprietà selezionate -->
+        <section id="filtered-property" class="row">
             <CardProperty  v-for="property in properties" :property="property"/>
         </section>
     </main>

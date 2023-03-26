@@ -1,13 +1,9 @@
 <script>
-import CardProperty from '../components/CardProperty.vue';
 import {store} from '../store.js'
 import { computed } from 'vue';
 
 export default {
   name: 'AllPropertyPage',
-  components:{
-    CardProperty,
-  },
   data(){
     return{
       
