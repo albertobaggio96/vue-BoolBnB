@@ -21,6 +21,9 @@
                     <li class="nav-item">
                         <router-link :to="{ name: 'search'}" class="nav-link"> results </router-link>
                     </li>
+                    <li class="nav-item">
+                        <router-link :to="{ name: 'all'}" class="nav-link"> all </router-link>
+                    </li>
                 </ul>
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
