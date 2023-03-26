@@ -12,9 +12,8 @@
             }
         },
         methods:{
-            searchApparament(address, radius){
+            searchApparament(address){
                 this.store.storeParams.address = address;
-                this.store.storeParams.radius = radius;
             }
         }
     }

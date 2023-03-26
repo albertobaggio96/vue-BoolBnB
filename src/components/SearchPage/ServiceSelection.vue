@@ -1,4 +1,5 @@
 <script>
+
 export default {
   name: 'ServiceSelection',
   props:[
@@ -10,12 +11,6 @@ export default {
     }
   },
   methods:{
-    addOrRemov(arr, item){
-     if(arr.includes(item)){
-       return arr.splice(arr.indexOf(item), 1)
-     }  
-  		return arr.push(item)
-    }
   }
 }
 </script>
@@ -23,11 +18,18 @@ export default {
 <template>
   <ul>
     <li v-for="service in services">
-      <a @click="addOrRemov(checkedServices, service.id), $emit('servicesFilter', checkedServices)">{{ service.title }} <font-awesome-icon :icon="service.icon" /></a>
+      <input type="checkbox" :id="service.slug" :name="service.slug" :value="service.id" v-model="checkedServices"  @click="checkedServices" class="text-black text-decoration-none"/>
+        <label :for="service.slug"> <font-awesome-icon :icon="service.icon" />{{ service.title }} </label>
+    </li>
+    <li>
+      <a @click="checkedServices = []" class="btn btn-warning">Reset</a>
     </li>
   </ul>
+  
+  <a class="btn btn-primary" @click="$emit('servicesFilter', checkedServices)">cerca</a>
+  <div>{{ checkedServices }}</div>
 </template>
 
 <style lang="scss">
-  
+
 </style>

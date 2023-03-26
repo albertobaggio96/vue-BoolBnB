@@ -4,7 +4,6 @@ export default {
   data() {
     return {
       inputAddress: '',
-      inputRadius: '',
     }
   },
 }
@@ -14,10 +13,7 @@ export default {
   <form id="address-input">
     <label for="address">Seleziona una destinazione</label>
     <input type="text" placeholder="es.(Piazza S. Marco, Venezia)" v-model="inputAddress">
-    <input type="text" placeholder="es.20" v-model="inputRadius">
-      <router-link @click="$emit('address', inputAddress, inputRadius)" :to="{ name: 'search'}" class="btn btn-primary"> results </router-link>
-
-    
+    <router-link @click="$emit('address', inputAddress)" :to="{ name: 'search'}" class="btn btn-primary"> results </router-link>
   </form>
 </template>
 

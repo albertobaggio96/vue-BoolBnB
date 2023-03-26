@@ -21,22 +21,25 @@ export default {
     },
     methods:{
         getPropertyApi(){
-            const requests = [
-            //***** chiamata axios che riporta le proprietà con la via e il raggio indicato precedentemente****************************************
-                axios.get(this.store.apiUri, {
-                  params: this.store.storeParams
-                }),
-            //***** chiamata axios che riporta tutta la tebella servizi****************************************
-                axios.get(`${this.store.apiUri}/services`)
-
-             ]
-            //  richiama le due chiamate axios in un array
-             axios.all(requests).then((responses) => {
-                console.log(responses[1].data.results)
-                // il primo risultato è il prodotto della prima chiamata (le proprietà)
-                this.properties = responses[0].data.results
-                // il secondo risultato è il prodotto della seconda chiamata (la tabella servizi)
-                this.services = responses[1].data.results
+            axios.get(this.store.apiUri, {
+              params: this.store.storeParams
+            })
+            .then((response) => {
+                console.log(response)
+                this.properties = response.data.results
+             })
+             .catch(function (error) {
+               console.log(error, ok);
+             })
+             .finally(function () {
+               // always executed
+             });  
+        },
+        getServicesApi(){
+            axios.get(`${this.store.apiUri}/services`)
+            .then((response) => {
+                console.log(response)
+                this.services = response.data.results
              })
              .catch(function (error) {
                console.log(error);
@@ -46,11 +49,13 @@ export default {
              });  
         },
         getServicesFilter(services){
-            this.servicesFilter = services;
+            this.store.storeParams.services = services;
+            this.getPropertyApi()
         }
     },
     created(){
         this.getPropertyApi()
+        this.getServicesApi()
     }
 }
 </script>
@@ -63,8 +68,7 @@ export default {
         <section id="services-selection" class="row">
             <ServiceSelection :services="services" @servicesFilter="getServicesFilter"/>
         </section>
-        <div>{{ servicesFilter }}</div>
-
+        {{ this.store}}
         <!-- risultato delle proprietà selezionate -->
         <section id="filtered-property" class="row">
             <CardProperty  v-for="property in properties" :property="property"/>

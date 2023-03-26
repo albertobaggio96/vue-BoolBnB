@@ -18,9 +18,10 @@ export default {
     <h2>{{ property.title}}</h2>
     <div> services : 
       <ul>
-        <li v-for="service in property.services">{{ service.title }} <font-awesome-icon icon="fa-solid fa-user-secret" /></li>
+        <li v-for="service in property.services">{{ service.title }} </li>
       </ul>
     </div>
+    <div>{{ property.distance }}</div>
   </article>
 </template>
 
