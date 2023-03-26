@@ -2,8 +2,12 @@
 import {store} from '../store.js'
 import axios from 'axios';
 
+import CardProperty from '../components/shered-components/CardProperty.vue';
 export default {
     name: 'searchPage',
+    components:{
+        CardProperty
+    },
     data() {
         return {
             store,
@@ -25,6 +29,7 @@ export default {
              ]
             //  richiama le due chiamate axios in un array
              axios.all(requests).then((responses) => {
+                console.log(responses[0].data.results)
                 // il primo risultato è il prodotto della prima chiamata (le proprietà)
                 this.properties = responses[0].data.results
                 // il secondo risultato è il prodotto della seconda chiamata (la tabella servizi)
@@ -45,14 +50,12 @@ export default {
 </script>
 
 <template >
-    <div>
+    <main>
         <h1>search</h1>
-        <section>
-            <article v-for="property in properties">
-                <h1>{{property.title}}</h1>
-            </article>
+        <section class="row">
+            <CardProperty  v-for="property in properties" :property="property"/>
         </section>
-</div>
+    </main>
 </template>
 
 <style lang="scss">
