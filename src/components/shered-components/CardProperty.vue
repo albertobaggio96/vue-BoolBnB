@@ -22,6 +22,8 @@ export default {
       </ul>
     </div>
     <div>{{ property.distance }}</div>
+    <div>beds :{{ property.n_beds }}</div>
+    <div>rooms :{{ property.n_rooms }}</div>
   </article>
 </template>
 

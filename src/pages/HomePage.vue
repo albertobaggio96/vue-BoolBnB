@@ -14,8 +14,17 @@
         methods:{
             searchApparament(address){
                 this.store.storeParams.address = address;
+            },
+            resetStore(){
+                this.store.storeParams = {
+                    address : ''
+                }
             }
+        },
+        created(){
+            this.resetStore()
         }
+
     }
 </script>
 

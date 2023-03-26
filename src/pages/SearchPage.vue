@@ -3,13 +3,13 @@ import {store} from '../store.js'
 import axios from 'axios';
 
 import CardProperty from '../components/shered-components/CardProperty.vue';
-import ServiceSelection from '../components/SearchPage/ServiceSelection.vue';
+import FiltersApp from '../components/SearchPage/FiltersApp.vue';
 
 export default {
     name: 'searchPage',
     components:{
         CardProperty,
-        ServiceSelection
+        FiltersApp
     },
     data() {
         return {
@@ -48,8 +48,31 @@ export default {
                // always executed
              });  
         },
-        getServicesFilter(services){
-            this.store.storeParams.services = services;
+        getServicesFilter(services, beds, rooms, radius){
+            if(services.length){
+                this.store.storeParams.services = services;
+            } else{
+                delete this.store.storeParams.services 
+            }
+
+            if(beds){
+                this.store.storeParams.min_beds = beds;
+            } else{
+                delete this.store.storeParams.min_beds 
+            }
+
+            if(rooms){
+                this.store.storeParams.min_rooms = rooms;
+            } else{
+                delete this.store.storeParams.min_rooms 
+            }
+
+            if(radius){
+                this.store.storeParams.radius = radius;
+            } else{
+                delete this.store.storeParams.radius 
+            }
+            
             this.getPropertyApi()
         }
     },
@@ -66,7 +89,7 @@ export default {
 
         <!-- sezione della selezione dei servizi -->
         <section id="services-selection" class="row">
-            <ServiceSelection :services="services" @servicesFilter="getServicesFilter"/>
+            <FiltersApp :services="services" @servicesFilter="getServicesFilter"/>
         </section>
         {{ this.store}}
         <!-- risultato delle proprietà selezionate -->
