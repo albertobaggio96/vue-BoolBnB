@@ -23,7 +23,7 @@ export default {
 <template>
   <ul>
     <li v-for="service in services">
-      <a @click="addOrRemov(checkedServices, service.id), $emit('servicesFilter', checkedServices)">{{ service.title }} <i class="fa-solid fa-kitchen-set"></i></a>
+      <a @click="addOrRemov(checkedServices, service.id), $emit('servicesFilter', checkedServices)">{{ service.title }} <font-awesome-icon :icon="service.icon" /></a>
     </li>
   </ul>
 </template>

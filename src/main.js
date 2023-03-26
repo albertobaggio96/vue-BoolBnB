@@ -2,5 +2,16 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import { router } from './route'
 
-createApp(App).use(router).mount('#app')
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+import { faKitchenSet } from '@fortawesome/free-solid-svg-icons'
+
+
+library.add(faKitchenSet)
+
+createApp(App)
+.component('font-awesome-icon', FontAwesomeIcon)
+.use(router)
+.mount('#app')
 
