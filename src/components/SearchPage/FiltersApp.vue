@@ -19,41 +19,208 @@ export default {
 </script>
 
 <template>
-  
-  <!-- services -->
-  <ul>
-    <li v-for="service in services">
-      <input type="checkbox" :id="service.slug" :name="service.slug" :value="service.id" v-model="checkedServices"  @click="checkedServices" class="text-black text-decoration-none"/>
-        <label :for="service.slug"> <font-awesome-icon :icon="service.icon" />{{ service.title }} </label>
-    </li>
-    <li>
-      <a @click="checkedServices = []" class="btn btn-warning">Reset</a>
-    </li>
-  </ul>
-  <div>
+    <!-- Button trigger modal -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Filtri
+        </button>
+      </div>
+    </div>
   </div>
 
-  <!-- beds -->
-  <div>
-    <input type="number" id="beds" name="beds" v-model="nBeds">
-    <label for="beds">Numero Letti</label>
-  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 ms-auto" id="exampleModalLabel">Filtri</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="beds-box">
+            <div class="row">
+              
+              <div class="col-12">
+                <h4>Stanze e letti:</h4>
+              </div>
+              <div class="col-12">
+                <h6>Letti</h6>
+                <div class="wrapper">
+                  <input type="radio" name="beds" id="oneBed" value="1" checked v-model="nBeds">
+                  <input type="radio" name="beds" id="twoBed" value="2" v-model="nBeds">
+                  <input type="radio" name="beds" id="threeBed" value="3"  v-model="nBeds">
+                  <input type="radio" name="beds" id="fourBed" value="4"  v-model="nBeds">
+                  <input type="radio" name="beds" id="fiveBed" value="5"  v-model="nBeds">
+                  <input type="radio" name="beds" id="sixPlusBed" value="6"  v-model="nBeds">
 
-  <!-- rooms -->
-  <div>
-    <input type="number" id="rooms" name="rooms" v-model="nRooms">
-    <label for="beds">Numero Stanze</label>
-  </div>
 
-  <!-- radius -->
-  <div>
-    <input type="number" id="rooms" name="rooms" v-model="radius">
-    <label for="beds">Distanza</label>
+                  <label for="oneBed" class="option option-1">
+                    <span>1</span>
+                  </label>
+                  <label for="twoBed" class="option option-2">
+                    <span>2</span>
+                  </label>
+                  <label for="threeBed" class="option option-3">
+                    <span>3</span>
+                  </label>
+                  <label for="fourBed" class="option option-4">
+                    <span>4</span>
+                  </label>
+                  <label for="fiveBed" class="option option-5">
+                    <span>5</span>
+                  </label>
+                  <label for="sixPlusBed" class="option option-6">
+                    <span>6+</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <h6>Stanze</h6>
+                <div class="wrapper">
+                  <input type="radio" name="rooms" id="oneRoom" value="1" checked v-model="nRooms">
+                  <input type="radio" name="rooms" id="twoRoom" value="2" v-model="nRooms">
+                  <input type="radio" name="rooms" id="threeRoom" value="3"  v-model="nRooms">
+                  <input type="radio" name="rooms" id="fourRoom" value="4"  v-model="nRooms">
+                  <input type="radio" name="rooms" id="fiveRoom" value="5"  v-model="nRooms">
+                  <input type="radio" name="rooms" id="sixPlusRoom" value="6"  v-model="nRooms">
+
+
+                  <label for="oneRoom" class="option option-1">
+                    <span>1</span>
+                  </label>
+                  <label for="twoRoom" class="option option-2">
+                    <span>2</span>
+                  </label>
+                  <label for="threeRoom" class="option option-3">
+                    <span>3</span>
+                  </label>
+                  <label for="fourRoom" class="option option-4">
+                    <span>4</span>
+                  </label>
+                  <label for="fiveRoom" class="option option-5">
+                    <span>5</span>
+                  </label>
+                  <label for="sixPlusRoom" class="option option-6">
+                    <span>6+</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="services-box container-fluid">
+            <div class="row">
+              <h4>Servizi:</h4>
+              <div class="col-sm-12 col-lg-6 my-2" v-for="service in services">
+                <input type="checkbox" :id="service.slug" :name="service.slug" :value="service.id" v-model="checkedServices"  @click="checkedServices" class="form-check-input text-black text-decoration-none"/>
+                <label :for="service.slug" class="mx-2"> {{ service.title }} </label>
+              </div>
+            </div>
+          </div>
+          <div class="distance-box container-fluid">
+            <div class="row">
+
+              <div class="col-12">
+                <h4>Distanza:</h4>
+              </div>
+
+              <div class="col-12">
+                <label for="customRange3" class="form-label">Aumenta il raggio di ricerca</label>
+                <input type="range" class="form-range range-md px-sm-3 px-lg-5 p" min="20" max="1000" step="20" id="customRange3" v-model="radius">
+              </div>
+              <div class="row ms-sm-0 ms-md-5">
+                <div class="km-input border border-1 col-6 col-md-6 col-lg-4">
+                  <span class="d-block text-secondary">Distanza minima</span>
+                  <label for="km" class="fw-bolder me-1">Km</label>
+                  <input id="km" type="text" v-model="radius" class="border-0 w-50">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn button-style"  @click="$emit('servicesFilter', checkedServices, nBeds, nRooms, radius)" data-bs-dismiss="modal">Salva</button>
+          <a @click="checkedServices = []" class="btn btn-warning">Reset</a>
+        </div>
+      </div>
+    </div>
   </div>
-  <a class="btn btn-primary" @click="$emit('servicesFilter', checkedServices, nBeds, nRooms, radius)">cerca</a>
-  <div>{{ checkedServices }}</div>
 </template>
 
+
 <style lang="scss">
+  @use '../../style/partials/variables' as*;
+
+  .button-style{
+    @include button-style;
+  }
+
+  input[type="radio"] {
+  display: none;
+  }
+
+  .wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  padding: 20px 15px;
+  
+  .option {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 5px 20px;
+    border: 2px solid $light-purple;
+    transition: all 0.5s ease;
+    margin: 0 10px;
+    }
+  }
+
+
+  input#oneRoom:checked ~ .option-1,
+  input#twoRoom:checked ~ .option-2,
+  input#threeRoom:checked ~ .option-3,
+  input#fourRoom:checked ~ .option-4,
+  input#fiveRoom:checked ~ .option-5,
+  input#sixPlusRoom:checked ~ .option-6,
+  input#oneBed:checked ~ .option-1,
+  input#twoBed:checked ~ .option-2,
+  input#threeBed:checked ~ .option-3,
+  input#fourBed:checked ~ .option-4,
+  input#fiveBed:checked ~ .option-5,
+  input#sixPlusBed:checked ~ .option-6{
+  background: $secondary-purple;
+  border-color: $light-purple;
+  }
+  
+  input#oneRoom:checked ~ .option-1 span,
+  input#twoRoom:checked ~ .option-2 span,
+  input#threeRoom:checked ~ .option-3 span,
+  input#fourRoom:checked ~ .option-4 span,
+  input#fiveRoom:checked ~ .option-5 span,
+  input#sixPlusRoom:checked ~ .option-6 span,
+  input#oneBed:checked ~ .option-1 span,
+  input#twoBed:checked ~ .option-2 span,
+  input#threeBed:checked ~ .option-3 span,
+  input#fourBed:checked ~ .option-4 span,
+  input#fiveBed:checked ~ .option-5 span,
+  input#sixPlusBed:checked ~ .option-6 span{
+    color: #fff;
+  }
+
+  input[type="range"]::-moz-range-thumb{
+    background-color: $secondary-purple;
+    &:active{
+      background-color: $primary-purple;
+    }
+  }
+ 
 
 </style>
