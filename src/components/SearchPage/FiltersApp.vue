@@ -39,78 +39,80 @@ export default {
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <div class="beds-box">
+          <div class="roomsBeeds-box custom-mobile">
             <div class="row">
               
               <div class="col-12">
                 <h4>Stanze e letti:</h4>
               </div>
+              <!-- CHOSE BEDS -->
               <div class="col-12">
                 <h6>Letti</h6>
-                <div class="wrapper">
-                  <input type="radio" name="beds" id="oneBed" value="1" checked v-model="nBeds">
+              </div>
+                <div class="wrapper col-12">
+                  <input type="radio" name="beds" id="oneBed" value="1" v-model="nBeds">
                   <input type="radio" name="beds" id="twoBed" value="2" v-model="nBeds">
                   <input type="radio" name="beds" id="threeBed" value="3"  v-model="nBeds">
                   <input type="radio" name="beds" id="fourBed" value="4"  v-model="nBeds">
                   <input type="radio" name="beds" id="fiveBed" value="5"  v-model="nBeds">
                   <input type="radio" name="beds" id="sixPlusBed" value="6"  v-model="nBeds">
 
-
-                  <label for="oneBed" class="option option-1">
+                  <label for="oneBed" class="option option-1 py-1">
                     <span>1</span>
                   </label>
-                  <label for="twoBed" class="option option-2">
+                  <label for="twoBed" class="option option-2 py-1">
                     <span>2</span>
                   </label>
-                  <label for="threeBed" class="option option-3">
+                  <label for="threeBed" class="option option-3 py-1">
                     <span>3</span>
                   </label>
-                  <label for="fourBed" class="option option-4">
+                  <label for="fourBed" class="option option-4 py-1">
                     <span>4</span>
                   </label>
-                  <label for="fiveBed" class="option option-5">
+                  <label for="fiveBed" class="option option-5 py-1">
                     <span>5</span>
                   </label>
-                  <label for="sixPlusBed" class="option option-6">
+                  <label for="sixPlusBed" class="option option-6 py-1">
                     <span>6+</span>
                   </label>
                 </div>
-              </div>
-
+          
+              <!-- CHOSE ROOMS -->
               <div class="col-12">
                 <h6>Stanze</h6>
-                <div class="wrapper">
-                  <input type="radio" name="rooms" id="oneRoom" value="1" checked v-model="nRooms">
+              </div>
+                <div class="wrapper col-12">
+                  <input type="radio" name="rooms" id="oneRoom" value="1" v-model="nRooms">
                   <input type="radio" name="rooms" id="twoRoom" value="2" v-model="nRooms">
                   <input type="radio" name="rooms" id="threeRoom" value="3"  v-model="nRooms">
                   <input type="radio" name="rooms" id="fourRoom" value="4"  v-model="nRooms">
                   <input type="radio" name="rooms" id="fiveRoom" value="5"  v-model="nRooms">
                   <input type="radio" name="rooms" id="sixPlusRoom" value="6"  v-model="nRooms">
 
-
-                  <label for="oneRoom" class="option option-1">
+                  <label for="oneRoom" class="option option-1 py-1 py-1">
                     <span>1</span>
                   </label>
-                  <label for="twoRoom" class="option option-2">
+                  <label for="twoRoom" class="option option-2 py-1 py-1">
                     <span>2</span>
                   </label>
-                  <label for="threeRoom" class="option option-3">
+                  <label for="threeRoom" class="option option-3 py-1 py-1">
                     <span>3</span>
                   </label>
-                  <label for="fourRoom" class="option option-4">
+                  <label for="fourRoom" class="option option-4 py-1 py-1">
                     <span>4</span>
                   </label>
-                  <label for="fiveRoom" class="option option-5">
+                  <label for="fiveRoom" class="option option-5 py-1 py-1">
                     <span>5</span>
                   </label>
-                  <label for="sixPlusRoom" class="option option-6">
+                  <label for="sixPlusRoom" class="option option-6 py-1 py-1">
                     <span>6+</span>
                   </label>
-                </div>
               </div>
             </div>
           </div>
+          <hr>
           <div class="services-box container-fluid">
+            <!-- CHOSE SERVICE -->
             <div class="row">
               <h4>Servizi:</h4>
               <div class="col-sm-12 col-lg-6 my-2" v-for="service in services">
@@ -119,9 +121,10 @@ export default {
               </div>
             </div>
           </div>
+          <hr>
           <div class="distance-box container-fluid">
+            <!-- RADIUS -->
             <div class="row">
-
               <div class="col-12">
                 <h4>Distanza:</h4>
               </div>
@@ -133,14 +136,14 @@ export default {
               <div class="row ms-sm-0 ms-md-5">
                 <div class="km-input border border-1 col-6 col-md-6 col-lg-4">
                   <span class="d-block text-secondary">Distanza minima</span>
-                  <label for="km" class="fw-bolder me-1">Km</label>
-                  <input id="km" type="text" v-model="radius" class="border-0 w-50">
+                  <label for="km" class="fw-semibold me-1">Km</label>
+                  <input id="km" type="text" v-model="radius" class="border-0 w-75">
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer d-flex justify-content-between">
           <a @click="checkedServices = []" class="btn button-reset">Reset</a>
           <button type="button" class="btn button-secondary"  @click="$emit('servicesFilter', checkedServices, nBeds, nRooms, radius)" data-bs-dismiss="modal">Salva</button>
         </div>
@@ -160,7 +163,9 @@ export default {
   .button-reset{
     border: 1px solid $secondary-purple;
     &:hover{
-      border: 1px solid $primary-purple;
+      border: 1px solid $secondary-purple;
+      background-color: $primary-purple;
+      color: white;
     }
   }
 
@@ -183,14 +188,13 @@ export default {
     justify-content: space-evenly;
     cursor: pointer;
     border-radius: 10px;
-    padding: 5px 20px;
     border: 2px solid $light-purple;
     transition: all 0.5s ease;
     margin: 0 10px;
     }
   }
 
-
+  
   input#oneRoom:checked ~ .option-1,
   input#twoRoom:checked ~ .option-2,
   input#threeRoom:checked ~ .option-3,
@@ -229,5 +233,9 @@ export default {
     }
   }
  
+  input[type="checkbox"]:checked{
+    background-color: $secondary-purple;
+    border-color: $primary-purple;
+  }
 
 </style>
