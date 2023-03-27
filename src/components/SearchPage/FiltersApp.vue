@@ -19,6 +19,7 @@ export default {
 </script>
 
 <template>
+  
   <!-- services -->
   <ul>
     <li v-for="service in services">

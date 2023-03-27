@@ -1,6 +1,7 @@
-<script>
+<script> 
   import AppNavbar from './components/AppNavbar.vue';
- 
+  //import 'bootstrap/dist/js/bootstrap'
+
   export default{
     name: 'app',
     components: {
