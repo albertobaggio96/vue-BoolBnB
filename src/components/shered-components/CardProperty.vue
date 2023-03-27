@@ -38,7 +38,7 @@ export default {
   </article> -->
 
 
-  <div class="card border-0">
+  <div class="card border-0 mb-4">
     <div :id="'carouselExampleIndicators'+ property.id" class="carousel carousel-dark slide" data-bs-ride="false">
       <div class="carousel-indicators">
         <button 
@@ -58,7 +58,7 @@ export default {
           <img :src="(image.path) ? 'http://127.0.0.1:8000/storage/'+image.path : property.cover_img" alt="" class="custom-img d-block w-100">
         </div>
       </div>
-      <button class="carousel-control-prev" type="button" :data-bs-target="'#carouselExampleIndicatorsDark'+ property.id" data-bs-slide="prev">
+      <button class="carousel-control-prev" type="button" :data-bs-target="'#carouselExampleIndicators'+ property.id" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
       </button>
@@ -67,28 +67,42 @@ export default {
         <span class="visually-hidden">Next</span>
       </button>
     </div>
+    <div class="card-body">
+      <h6 class="card-title fw-bold">{{ (property.address.split('-')[1]) ? property.address.split('-')[1] : property.address.split(' ').slice(-1)[0] }}</h6>
+      <h6 class="card-subtitle mb-2 text-muted"></h6>
+      <span class=""><strong>{{ property.night_price }}&euro;</strong> notte</span>
+    </div>
   </div>
 </template>
 
 <style lang="scss">
+
 .carousel-item{
   height: 280px;
-  
   .custom-img{
     object-fit: cover;
     object-position: center;
     height: 100%;
+    border-radius: 20px;
   }
 }
 
 
 .carousel-control-next-icon,
 .carousel-control-prev-icon{
-  border: 1px solid white;;
+  border: 1px solid white;
   border-radius: 50%;
   padding: .8rem;
   background-color: black;
 
+}
+
+.card-title{
+  font-size: 14px;
+}
+
+.price-box{
+  line-height: inherit;
 }
 
 </style>
