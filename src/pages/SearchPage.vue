@@ -86,10 +86,9 @@ export default {
 <template >
     <main>
         <!-- sezione della selezione dei servizi -->
-        <section id="services-selection" class="row">
+        <section id="services-selection">
             <FiltersApp :services="services" @servicesFilter="getServicesFilter"/>
         </section>
-        {{ this.store}}
         <!-- risultato delle proprietà selezionate -->
         <section id="filtered-property">
             <div class="container">
