@@ -16,11 +16,20 @@ $light-purple: #9fadee;
 
 //MIXIN
 
-@mixin button-style{
-    background-color: #7089f5;
+@mixin button-primary{
+    background-color: $primary-purple;
     color: white;
     &:hover{
-        background-color: #9fadee;
+        background-color: $light-purple;
+        color: white;
+    }
+}
+
+@mixin button-secondary{
+    background-color: $secondary-purple;
+    color: white;
+    &:hover{
+        background-color: $light-purple;
         color: white;
     }
 }

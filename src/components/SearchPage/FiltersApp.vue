@@ -141,8 +141,8 @@ export default {
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn button-style"  @click="$emit('servicesFilter', checkedServices, nBeds, nRooms, radius)" data-bs-dismiss="modal">Salva</button>
-          <a @click="checkedServices = []" class="btn btn-warning">Reset</a>
+          <a @click="checkedServices = []" class="btn button-reset">Reset</a>
+          <button type="button" class="btn button-secondary"  @click="$emit('servicesFilter', checkedServices, nBeds, nRooms, radius)" data-bs-dismiss="modal">Salva</button>
         </div>
       </div>
     </div>
@@ -153,8 +153,15 @@ export default {
 <style lang="scss">
   @use '../../style/partials/variables' as*;
 
-  .button-style{
-    @include button-style;
+  .button-secondary{
+    @include button-secondary;
+  }
+
+  .button-reset{
+    border: 1px solid $secondary-purple;
+    &:hover{
+      border: 1px solid $primary-purple;
+    }
   }
 
   input[type="radio"] {
