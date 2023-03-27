@@ -1,10 +1,13 @@
 <script>
 import RouteInput from '../components/HomePage/RouteInput.vue'
 import { store } from '../store'
+
+
 export default {
     name: 'HomePage',
     components: {
-        RouteInput
+        RouteInput,
+        
     },
     data() {
         return {
@@ -54,4 +57,19 @@ export default {
 
 <style lang="scss">
 
-    </style>
+:root {
+  --bg: #fff;
+  --color: #333333;
+}
+
+html.dark-mode {
+  --bg: #232b32;
+  --color: #ddd8ca;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--color);
+}
+
+</style>
