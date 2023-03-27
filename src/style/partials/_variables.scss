@@ -1,0 +1,37 @@
+$primary-purple: #6962e9;
+$secondary-purple: #7089f5;
+$light-purple: #9fadee;
+
+
+
+
+
+
+
+
+
+
+
+
+
+//MIXIN
+
+@mixin button-primary{
+    background-color: $primary-purple;
+    color: white;
+    &:hover{
+        background-color: $light-purple;
+        color: white;
+        transition: all 0.7s ease;
+    }
+}
+
+@mixin button-secondary{
+    background-color: $secondary-purple;
+    color: white;
+    &:hover{
+        background-color: $light-purple;
+        color: white;
+        transition: all 0.7s ease;
+    }
+}

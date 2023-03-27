@@ -1,9 +1,15 @@
 <script>
+import { objectToString } from '@vue/shared';
+
 export default {
   name: 'CardProperty',
-  props:[
-    'property'
-  ],
+  props:{
+    'property': {
+      type: Object,
+      required: true
+    },
+    // 'imagePath'
+  },
   data(){
     return{
 
@@ -14,7 +20,9 @@ export default {
 </script>
 
 <template>
-  <article class="col-12 col-lg-3">
+  <article>
+    <!-- <img :src="imagePath+''+property.cover" alt=""> -->
+    <img :src="'http://127.0.0.1:8000/storage/'+property.cover_img" alt="" class="img-fluid">
     <h2>{{ property.title}}</h2>
     <div> services : 
       <ul>
