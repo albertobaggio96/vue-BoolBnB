@@ -38,8 +38,8 @@ export default {
   </article> -->
 
 
-  <div class="card" style="width: 18rem;">
-    <div :id="'carouselExampleIndicators'+ property.id" class="carousel slide" data-bs-ride="false">
+  <div class="card border-0">
+    <div :id="'carouselExampleIndicators'+ property.id" class="carousel carousel-dark slide" data-bs-ride="false">
       <div class="carousel-indicators">
         <button 
           v-for="id, index in property.images"  
@@ -47,6 +47,7 @@ export default {
           :data-bs-target="'#carouselExampleIndicators' + property.id" 
           :data-bs-slide-to="index" 
           :class="(index == 0) ? 'active' : ''" 
+          class="bg-white"
           :aria-current="(index == 0) ? 'true' : ''" 
           :aria-label="'Slide ' + (index + 1)">
         </button>
@@ -54,11 +55,10 @@ export default {
       </div>
       <div class="carousel-inner">  
         <div class="carousel-item" :class="(index == 0) ? 'active' : ''" v-for="image, index in property.images">
-          {{ index }}
-          <img :src="'http://127.0.0.1:8000/storage/'+image.path" alt="" class="img-fluid d-block w-100">
+          <img :src="(image.path) ? 'http://127.0.0.1:8000/storage/'+image.path : property.cover_img" alt="" class="custom-img d-block w-100">
         </div>
       </div>
-      <button class="carousel-control-prev" type="button" :data-bs-target="'#carouselExampleIndicators'+ property.id" data-bs-slide="prev">
+      <button class="carousel-control-prev" type="button" :data-bs-target="'#carouselExampleIndicatorsDark'+ property.id" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
       </button>
@@ -67,12 +67,28 @@ export default {
         <span class="visually-hidden">Next</span>
       </button>
     </div>
-  <div class="card-body">
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
   </div>
-</div>
 </template>
 
 <style lang="scss">
+.carousel-item{
+  height: 280px;
   
+  .custom-img{
+    object-fit: cover;
+    object-position: center;
+    height: 100%;
+  }
+}
+
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon{
+  border: 1px solid white;;
+  border-radius: 50%;
+  padding: .8rem;
+  background-color: black;
+
+}
+
 </style>

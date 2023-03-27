@@ -43,11 +43,7 @@ export default {
 
 <template>
   <main>
-    <div class="container">
-      <div class="row">
-          <CardProperty :property="property" class="col-10" />
-      </div>
-    </div>
+    <CardProperty :property="property"/>
   </main>
 </template>
 
