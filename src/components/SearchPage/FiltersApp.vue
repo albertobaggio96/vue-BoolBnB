@@ -10,7 +10,7 @@ export default {
       checkedServices: [],
       nBeds : null,
       nRooms : null,
-      radius : null,
+      radius : 20,
     }
   },
   methods:{
@@ -166,6 +166,7 @@ export default {
       border: 1px solid $secondary-purple;
       background-color: $primary-purple;
       color: white;
+      transition: all 0.7s ease;
     }
   }
 

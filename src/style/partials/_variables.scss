@@ -22,6 +22,7 @@ $light-purple: #9fadee;
     &:hover{
         background-color: $light-purple;
         color: white;
+        transition: all 0.7s ease;
     }
 }
 
@@ -31,5 +32,6 @@ $light-purple: #9fadee;
     &:hover{
         background-color: $light-purple;
         color: white;
+        transition: all 0.7s ease;
     }
 }
