@@ -36,8 +36,8 @@ export default {
     <section>
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                    <h1>{{ property.title }}</h1>
+                <div class="col-12 mt-4 mb-5 p-0">
+                    <h1 class="fs-2 fw-bolder">{{ property.title }}</h1>
                 </div>
             </div>
         </div>
@@ -46,12 +46,40 @@ export default {
     <section>
         <div class="container">
             <div class="row">
-                <div class="col-6 p-1">
+                <div class="col-12 d-lg-none">
+                    <div :id="'carouselExampleIndicators'+ property.id" class="carousel slide" data-bs-ride="false">
+                        <div class="carousel-indicators">
+                            <button 
+                            v-for="id, index in property.images"  
+                            type="button" 
+                            :data-bs-target="'#carouselExampleIndicators' + property.id" 
+                            :data-bs-slide-to="index" 
+                            :class="(index == 0) ? 'active' : ''" 
+                            :aria-current="(index == 0) ? 'true' : ''" 
+                            :aria-label="'Slide ' + (index + 1)">
+                            </button>
+                        </div>
+                        <div class="carousel-inner">  
+                            <div class="carousel-item" :class="(index == 0) ? 'active' : ''" v-for="image, index in property.images">
+                                <img :src="'http://127.0.0.1:8000/storage/'+image.path" alt="" class="img-fluid d-block w-100">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" :data-bs-target="'#carouselExampleIndicators'+ property.id" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" :data-bs-target="'#carouselExampleIndicators' + property.id" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-6 p-1 d-none d-lg-inline-flex">
                     <img :src="'http://127.0.0.1:8000/storage/'+property.cover_img" alt="" class="img-fluid h-100 top-img">
                 </div>
             
-                <div class="col-6 h-100 d-flex flex-wrap p-1">
-                    <div class="wrapper-img" v-for="image, index in property.images.slice(1, 5)">
+                <div class="col-6 h-100 d-flex flex-wrap p-1 d-none d-lg-inline-flex">
+                    <div class="wrapper-img" v-for="image, index in property.images.slice(1, 5)" :class="'wrapper'+index">
                         <img :src="'http://127.0.0.1:8000/storage/'+image.path" class="img-fluid h-100" :class="'custom-img'+index" alt="">
                     </div>
                 </div>
@@ -62,35 +90,63 @@ export default {
     <section>
         <div class="container">
             <div class="row">
-
                 <div class="col-8">
                     <div class="row">
-                        <div class="col-12">
-                            <h3>Info proprietà</h3>
-                            <p>{{property.n_beds}} Ospiti | {{property.n_rooms}} Stanze | {{property.n_toilettes}} Bagni</p>
+                        <div class="col-12 my-3">
+                            <p>{{property.n_beds}} Ospiti | {{property.n_rooms}} Camere da letto | {{ property.n_beds }} Letti | {{property.n_toilettes}} Bagni</p>
                         </div>
-                        <div class="col-12">
+                        <hr>
+                        <div class="col-12 my-4">
                             <h3>Descrizione:</h3>
                             <p>{{ property.description }}</p>
                         </div>
+                        <hr>
                         <div class="col-12">
                             <h3>Servizi:</h3>
-                            <ul class="list-unstyled">
-                                <li v-for="service in property.services" :key="service.id">
-                                    <font-awesome-icon :icon="service.icon" />
-                                    <span class="ms-3">{{ service.title }}</span>
-                                </li>
-                            </ul>
                         </div>
+                            <div class="col-12 col-lg-6 my-2" v-for="service in property.services" :key="service.id">
+                                <font-awesome-icon :icon="service.icon" />
+                                <span class="ms-3">{{ service.title }}</span>
+                            </div>
+                        
                     </div>
                 </div>
 
                 <div class="col-4">
-                    <div class="col-12">
-                        <p>Costo per notte: {{ property.night_price }}€</p>
-                    </div>
-                    <div class="col-12">
-                        Form per contattare l'host
+                    <div class="row align-content-center h-100 my-4">
+                        <!-- <div class="col-12">
+                            <p>Costo per notte: {{ property.night_price }}€</p>
+                        </div> -->
+                        <div class="col-12">
+                            <div class="card w-100">
+                                <div class="card-body">
+                                    <div class="title mt-3 mb-5">
+                                        <h5 class="card-title">Costo <strong>{{ property.night_price }}€</strong> per notte</h5>
+                                    </div>
+                                    <hr>
+                                    <form class="text-center">
+                                        <div class="mb-3">
+                                            <label for="exampleInputEmail1" class="form-label">Inserisci la tua Email</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleInputEmail1" class="form-label">Nome</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleInputEmail1" class="form-label">Oggetto del messaggio</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label" for="message">Scrivi il tuo messaggio</label>
+                                            <textarea name="message" id="message" cols="10" rows="" class="form-control"></textarea>
+                                        </div>
+                                        <hr class="my-5">
+                                        <button type="submit" class="btn button-primary">Invia</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -102,24 +158,42 @@ export default {
 
 
 <style lang="scss" scoped>
+    @use '../style/partials/variables' as*;
     .top-img{
         border-top-left-radius: 10px;
         border-bottom-left-radius: 10px;   
     }
     .wrapper-img{
-        width: 50%;
+        width: calc(50% - 5px);
         height: 300px;
         img{
             height: 100%;
         }
     }
+
+    .wrapper0{
+        margin-bottom: 5px;
+        margin-right: 5px;
+    }
+    .wrapper2{
+        margin-right: 5px;
+    }
     .custom-img1{
         border-top-right-radius: 10px;
-
     }
 
     .custom-img3{
         border-bottom-right-radius: 10px;
+    }
+
+    .card{
+        border-radius: 20px;
+        box-shadow: 0 1px 1px rgba(0,0,0,0.11), 0 2px 2px rgba(0,0,0,0.11), 0 4px 4px rgba(0,0,0,0.11), 0 8px 8px rgba(0,0,0,0.11), 0 16px 16px rgba(0,0,0,0.11), 0 32px 32px rgba(0,0,0,0.11);
+        background-image: linear-gradient(120deg, #7089f5 0%, #778deb 100%);
+    }
+    .button-primary{
+        @include button-primary;
+        padding: .3rem 3.5rem;
     }
   
 </style>
