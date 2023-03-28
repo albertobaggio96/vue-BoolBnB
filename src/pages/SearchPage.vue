@@ -16,7 +16,7 @@ export default {
             store,
             properties: null,
             services: null,
-            servicesFilter : [],
+            servicesFilter : null,
         }
     },
     methods:{
@@ -96,8 +96,14 @@ export default {
         <section id="filtered-property">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3"  v-for="property in properties">
-                        <CardProperty :property="property" @showSlug="getShowParams"/>
+                    <div v-if="properties === null" class="spinner-border text-secondary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <div v-else-if="properties.length === 0 ">
+                        NON CI SONO PROPRIETà
+                    </div>
+                    <div v-else class="col-sm-12 col-md-6 col-lg-4 col-xl-3"  v-for="property in properties">
+                      <CardProperty :property="property" @showSlug="getShowParams"/>
                     </div>
                 </div>
             </div>
