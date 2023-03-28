@@ -1,5 +1,9 @@
 <script>
+import axios from 'axios'
 export default {
+  props:[
+    'url',
+  ],
   data() {
     return {
       mailGuest : '',
@@ -9,14 +13,17 @@ export default {
     }
   },
   methods: {
-    getProperties() {
-      axios.get(this.stro, {
+    SendMessage() {
+      axios.get(this.url , {
         params: {
+          name: this.nameGuest,
+          mail_form: this.mailGuest,
+          subject: this.subjectGuest,
+          body_message: this.messageGuest,
         }
       })
       .then((response) => {
         console.log(response)
-        this.property = response.data.results
       })
     }
   }
@@ -44,7 +51,7 @@ export default {
             <textarea name="message-guest" id="message-guest"  v-model="messageGuest" class="form-control" required></textarea>
         </div>
         <hr class="my-5">
-        <button type="submit" class="btn button-primary" @click="$emit('send', mailGuest, nameGuest, subjectGuest, messageGuest)">Invia Messaggio</button>
+        <button type="submit" class="btn button-primary" @click="SendMessage()">Invia Messaggio</button>
     </form>
 </template>
 

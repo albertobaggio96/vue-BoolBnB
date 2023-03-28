@@ -10,12 +10,13 @@ export default {
     data() {
         return {
             store,
-            property: Object
+            property: Object,
+            urlSlug: store.apiUri + '/' + store.show,
         }
     },
     methods: {
         getPropertyApi(){
-            axios.get(this.store.apiUri + '/' + this.store.show)
+            axios.get(this.urlSlug)
             .then((response) => {
                 console.log(response)
                 this.property = response.data.results
@@ -128,7 +129,7 @@ export default {
                                     </div>
                                     <hr>
 
-                                    <SendMessage/>
+                                    <SendMessage :url="urlSlug" />
                                 </div>
                             </div>
                         </div>
