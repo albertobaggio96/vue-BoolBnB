@@ -77,7 +77,7 @@ export default {
   </router-link>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 .carousel-item{
   height: 280px;
