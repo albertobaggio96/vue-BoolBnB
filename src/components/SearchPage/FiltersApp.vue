@@ -20,11 +20,11 @@ export default {
 
 <template>
     <!-- Button trigger modal -->
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-12">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Filtri
+  <div class="container">
+    <div class="row py-3">
+      <div class="col-12 text-end">
+        <button type="button" class="btn button-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <font-awesome-icon icon="fa-solid fa-sliders" /> Filtri
         </button>
       </div>
     </div>
@@ -158,6 +158,10 @@ export default {
 
   .button-secondary{
     @include button-secondary;
+  }
+
+  .button-primary{
+    @include button-primary;
   }
 
   .button-reset{

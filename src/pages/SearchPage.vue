@@ -85,16 +85,19 @@ export default {
 
 <template >
     <main>
-        <h1>search</h1>
-
         <!-- sezione della selezione dei servizi -->
-        <section id="services-selection" class="row">
+        <section id="services-selection">
             <FiltersApp :services="services" @servicesFilter="getServicesFilter"/>
         </section>
-        {{ this.store}}
         <!-- risultato delle proprietà selezionate -->
-        <section id="filtered-property" class="row">
-            <CardProperty  v-for="property in properties" :property="property"/>
+        <section id="filtered-property">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3"  v-for="property in properties">
+                        <CardProperty :property="property"/>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 </template>
