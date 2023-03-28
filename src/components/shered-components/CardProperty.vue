@@ -92,7 +92,6 @@ export default {
           <router-link @click="$emit('showSlug', property.slug)" :to="{ name: 'show' }" class="btn btn-primary">Show</router-link>
         </div>
       </div>
-      {{ property.slug }}
     </article>
   </div>
 </template>

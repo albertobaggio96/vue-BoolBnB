@@ -91,7 +91,6 @@ export default {
         <!-- sezione della selezione dei servizi -->
         <section id="services-selection">
             <FiltersApp :services="services" @servicesFilter="getServicesFilter"/>
-            {{ store }}
         </section>
         <!-- risultato delle proprietà selezionate -->
         <section id="filtered-property">
