@@ -7,13 +7,12 @@ export default {
     data() {
         return {
             store,
-            slug: 'accogliente-cottage-immerso-nella-natura-15',
             property: Object
         }
     },
     methods: {
         getPropertyApi(){
-            axios.get(this.store.apiUri + '/' + this.slug)
+            axios.get(this.store.apiUri + '/' + this.store.show)
             .then((response) => {
                 console.log(response)
                 this.property = response.data.results
