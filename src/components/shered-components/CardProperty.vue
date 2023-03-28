@@ -55,7 +55,9 @@ export default {
       <div class="carousel-inner">  
         <div class="carousel-item" :class="(index == 0) ? 'active' : ''" v-for="image, index in property.images">
           {{ index }}
-          <img :src="'http://127.0.0.1:8000/storage/'+image.path" alt="" class="img-fluid d-block w-100">
+          <figure>
+            <img :src="'http://127.0.0.1:8000/storage/'+image.path" :alt="property.title" class="img-fluid d-block w-100">
+          </figure>
         </div>
       </div>
       <button class="carousel-control-prev" type="button" :data-bs-target="'#carouselExampleIndicators'+ property.id" data-bs-slide="prev">
@@ -68,7 +70,10 @@ export default {
       </button>
     </div>
   <div class="card-body">
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <h2 class="fs-5 text-center">{{ property.title }}</h2>
+    <ul class="row text-center">
+      <li class="col list-group-item" v-for="service in property.services"><font-awesome-icon :icon="service.icon" /></li>
+    </ul>
   </div>
 </div>
 </template>
