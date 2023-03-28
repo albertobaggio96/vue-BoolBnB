@@ -8,7 +8,20 @@ export default {
       messageGuest: ''
     }
   },
+  methods: {
+    getProperties() {
+      axios.get(this.stro, {
+        params: {
+        }
+      })
+      .then((response) => {
+        console.log(response)
+        this.property = response.data.results
+      })
+    }
+  }
 }
+
 </script>
 
 <template>
