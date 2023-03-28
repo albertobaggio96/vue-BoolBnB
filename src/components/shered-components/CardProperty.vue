@@ -12,7 +12,13 @@ export default {
   },
   data(){
     return{
+      getMaxLength(string){
+        if(string.length > 27){
+          return string.substring(0, 26) + '...'
+        }
 
+        return string
+      }
     }
   }
 
@@ -67,11 +73,23 @@ export default {
         <span class="visually-hidden">Next</span>
       </button>
     </div>
-    <div class="card-body">
-      <h6 class="card-title fw-bold">{{ (property.address.split('-')[1]) ? property.address.split('-')[1] : property.address.split(' ').slice(-1)[0] }}</h6>
-      <h6 class="card-subtitle mb-2 text-muted"></h6>
-      <span class=""><strong>{{ property.night_price }}&euro;</strong> notte</span>
-    </div>
+    <article>
+      <div class="d-flex align-items-center justify-content-between p-1">
+        <h3 class="fs-6 fw-bold mb-0 h-100">{{ (property.address.split('-')[1]) ? property.address.split('-')[1] : property.address.split(' ').slice(-1)[0] }}</h3>
+        <h3 class="fs-6 text-muted mb-0 h-100"> {{ property.distance }} km</h3>
+        <div class="h-100"><strong>{{ property.night_price }}&euro;</strong> notte</div>
+      </div>
+      <div>
+        <h2 class="fs-5 text-center">{{ getMaxLength(property.title) }}</h2>
+      </div>
+      <ul class="row text-center p-0">
+        <li class="col list-group-item" v-for="service in property.services"><font-awesome-icon :icon="service.icon " /></li>
+      </ul>
+      <div class="d-flex justify-content-center">
+        <div class="pe-3"><font-awesome-icon icon="fa-solid fa-bed" /> {{ property.n_beds }}</div>
+        <div class="ps-3"><font-awesome-icon icon="fa-solid fa-person-shelter" /> {{ property.n_rooms }}</div>
+      </div>
+    </article>
   </div>
 </template>
 
