@@ -1,9 +1,12 @@
 <script>
 import {store} from '../store.js'
 import axios from 'axios'
-
+import SendMessage from '../components/PropertyShow/SendMessage.vue'
 export default {
     name: 'PropertyShow',
+    components:{
+        SendMessage,
+    },
     data() {
         return {
             store,
@@ -124,26 +127,8 @@ export default {
                                         <h5 class="card-title">Costo <strong>{{ property.night_price }}€</strong> per notte</h5>
                                     </div>
                                     <hr>
-                                    <form class="text-center">
-                                        <div class="mb-3">
-                                            <label for="exampleInputEmail1" class="form-label">Inserisci la tua Email</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="exampleInputEmail1" class="form-label">Nome</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="exampleInputEmail1" class="form-label">Oggetto del messaggio</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label" for="message">Scrivi il tuo messaggio</label>
-                                            <textarea name="message" id="message" cols="10" rows="" class="form-control"></textarea>
-                                        </div>
-                                        <hr class="my-5">
-                                        <button type="submit" class="btn button-primary">Invia</button>
-                                    </form>
+
+                                    <SendMessage/>
                                 </div>
                             </div>
                         </div>
@@ -188,12 +173,12 @@ export default {
 
     .card{
         border-radius: 20px;
-        box-shadow: 0 1px 1px rgba(0,0,0,0.11), 0 2px 2px rgba(0,0,0,0.11), 0 4px 4px rgba(0,0,0,0.11), 0 8px 8px rgba(0,0,0,0.11), 0 16px 16px rgba(0,0,0,0.11), 0 32px 32px rgba(0,0,0,0.11);
-        background-image: linear-gradient(120deg, #7089f5 0%, #778deb 100%);
-    }
-    .button-primary{
-        @include button-primary;
-        padding: .3rem 3.5rem;
+        background: #847EF0;
+        background: -webkit-radial-gradient(top left, #847EF0, #C0C3D4);
+        background: -moz-radial-gradient(top left, #847EF0, #C0C3D4);
+        -webkit-box-shadow: 10px 10px 5px -1px rgba(0,0,0,0.75);
+        -moz-box-shadow: 10px 10px 5px -1px rgba(0,0,0,0.75);
+        box-shadow: 10px 10px 5px -1px rgba(0,0,0,0.75);
     }
   
 </style>
