@@ -74,6 +74,9 @@ export default {
             }
             
             this.getPropertyApi()
+        },
+        getShowParams(slug){
+            this.store.show = slug;
         }
     },
     created(){
@@ -88,13 +91,14 @@ export default {
         <!-- sezione della selezione dei servizi -->
         <section id="services-selection">
             <FiltersApp :services="services" @servicesFilter="getServicesFilter"/>
+            {{ store }}
         </section>
         <!-- risultato delle proprietà selezionate -->
         <section id="filtered-property">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3"  v-for="property in properties">
-                        <CardProperty :property="property"/>
+                        <CardProperty :property="property" @showSlug="getShowParams"/>
                     </div>
                 </div>
             </div>

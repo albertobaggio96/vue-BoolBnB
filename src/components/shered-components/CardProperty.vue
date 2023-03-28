@@ -85,10 +85,14 @@ export default {
       <ul class="row text-center p-0">
         <li class="col list-group-item" v-for="service in property.services"><font-awesome-icon :icon="service.icon " /></li>
       </ul>
-      <div class="d-flex justify-content-center">
-        <div class="pe-3"><font-awesome-icon icon="fa-solid fa-bed" /> {{ property.n_beds }}</div>
-        <div class="ps-3"><font-awesome-icon icon="fa-solid fa-person-shelter" /> {{ property.n_rooms }}</div>
+      <div class="row text-center">
+        <div class="col ms-2"><font-awesome-icon icon="fa-solid fa-bed" /> {{ property.n_beds }}</div>
+        <div class="col"><font-awesome-icon icon="fa-solid fa-person-shelter" /> {{ property.n_rooms }}</div>
+        <div class="col">
+          <router-link @click="$emit('showSlug', property.slug)" :to="{ name: 'show' }" class="btn btn-primary">Show</router-link>
+        </div>
       </div>
+      {{ property.slug }}
     </article>
   </div>
 </template>
