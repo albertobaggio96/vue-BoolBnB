@@ -1,21 +1,32 @@
 <script>
 import {store} from '../store.js'
 import { computed } from 'vue';
-import axios from 'axios'
+import axios from 'axios';
 
 import CardProperty from '../components/shered-components/CardProperty.vue';
+// 
+
+// !!!!!!!!!!!!!!!!!!!!!!!!importare
+import SendMessage from '../components/PropertyShow/SendMessage.vue'
 
 export default {
   name: 'AllPropertyPage',
 
   components: {
-    CardProperty
+    CardProperty,
+    SendMessage
   },
 
   data(){
     return{
       store,
-      property: null
+      property: null,
+
+      //!!!!!!!!!!!!!!!!!! importare
+      mailGuest : '',
+      nameGuest: '',
+      subjectGuest: '',
+      messageGuest: ''
     }
   },
 
@@ -32,6 +43,13 @@ export default {
       .catch(function (error) {
         console.warn(error);
     });
+    },
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!! importare
+    getMessageForm(mail, name, object, message){
+      this.mailGuest = mail
+      this.nameGuest = name
+      this.subjectGuest = object
+      this.messageGuest = message
     }
   },
 
@@ -44,6 +62,11 @@ export default {
 <template>
   <main>
     <CardProperty :property="property"/>
+
+    <!-- !!!!!!!!!!!!!!! importare -->
+    <SendMessage @send="getMessageForm"/>
+
+    {{ mailGuest}} {{ nameGuest }} {{ subjectGuest }} {{ messageGuest }}
   </main>
 </template>
 
