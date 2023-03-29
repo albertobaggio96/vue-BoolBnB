@@ -3,19 +3,20 @@ export default {
   name: 'RouteInput',
   data() {
     return {
-      inputAddress: '',
+      inputAddress: null,
     }
   },
+  methods:{
+  }
 }
 </script>
 
 <template>
-  <form id="address-input">
+  <article id="address-input">
     <label for="address">Scegli una destinazione per le tue vacanze!</label>
     <input type="text" placeholder="es.(Piazza S. Marco, Venezia)" v-model="inputAddress">
-    <router-link @click="$emit('address', inputAddress)" :to="{ name: 'search' }" class="btn btn-primary"> Invia
-    </router-link>
-  </form>
+    <router-link id="address-button" @click.prevent=" $emit('address', inputAddress)" :to="{ name: 'search' }" class="btn btn-primary" :class="inputAddress.length < 5 ? 'pe-none' : ''" > Invia </router-link>
+  </article>
 </template>
 
 <style lang="scss">
