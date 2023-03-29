@@ -43,5 +43,21 @@ export default {
 }
 </script>
 <template>
-        <div id='map' class='map'></div>
+    <div class="map-wrapper container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div id='map' class='map'></div>
+            </div>
+        </div>
+    </div>
 </template>
+
+<style lang="scss" scoped>
+    .map-wrapper{
+
+        margin: 5rem 0;
+        .map{
+            height: 250px;
+        }
+    }
+</style>

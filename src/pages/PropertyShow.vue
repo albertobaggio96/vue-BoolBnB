@@ -5,6 +5,7 @@ import axios from 'axios'
 import MobileCarousel from '../components/shered-components/MobileCarousel.vue'
 import SendMessage from '../components/PropertyShow/SendMessage.vue'
 import ImagesDesktopMode from '../components/PropertyShow/ImagesDesktopMode.vue'
+import ShowDetails from '../components/PropertyShow/ShowDetails.vue'
 import GeoMap from '../components/PropertyShow/GeoMap.vue'
 
 export default {
@@ -13,6 +14,7 @@ export default {
         SendMessage,
         MobileCarousel,
         ImagesDesktopMode, 
+        ShowDetails,
         GeoMap,
     },
     data() {
@@ -81,67 +83,18 @@ export default {
 
     <section class="container">
         <div class="row">
-            <div class="col-12 col-lg-8">
-                <div class="row">
-                    <div class="col-12 col-md-6 my-3">
-                        <p>{{property.n_beds}} Ospiti | {{property.n_rooms}} Camere da letto | {{ property.n_beds }} Letti | {{property.n_toilettes}} Bagni</p>
-                    </div>
-                        <div class="col-12 col-md-6 text-md-end title mt-3 mb-5">
-                            <h5 class="card-title">Costo <strong>{{ property.night_price }}€</strong> per notte</h5>
-                        </div>
-                    <hr>
-                    <div class="col-md-12 my-4">
-                        <h3>Descrizione:</h3>
-                        <p>{{ property.description }}</p>
-                    </div>
-                    <hr>
-                    <div class="col-12">
-                        <h3>Servizi:</h3>
-                    </div>
-                        <div class="col-12 col-lg-6 my-2" v-for="service in property.services" :key="service.id">
-                            <font-awesome-icon :icon="service.icon" />
-                            <span class="ms-3">{{ service.title }}</span>
-                        </div>
-                    
-                </div>
-                <hr>
-            </div>
+            <!-- details -->
+            <ShowDetails :property="property"/>
             
             <div class="col-12 col-md-8 offset-md-3 col-lg-4 offset-lg-0">
                 <!-- MAP -->
-                <div class="map-wrapper container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                            <GeoMap :lon="property.longitude" :lat="property.latitude"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="row h-100 mb-4">
-                    <div class="col-12">
-                        <div class="card w-100">
-                            <div class="card-body">
-                                <div class="title mt-3 mb-5 text-center">
-                                    <h5 class="card-title">Invia un messaggio all'Host</h5>
-                                </div>
-                                <hr>
-                                <SendMessage @send="getMessageForm" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <GeoMap :lon="property.longitude" :lat="property.latitude"/>
+
+                <!-- message form -->
+                <SendMessage @send="getMessageForm" />
+
             </div>
         </div>
     </section>
 
 </template>
-
-
-<style lang="scss" scoped> 
-    .map-wrapper{
-
-        margin: 5rem 0;
-        .map{
-            height: 250px;
-        }
-    }
-</style>
