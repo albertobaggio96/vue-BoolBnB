@@ -62,7 +62,7 @@ export default {
 
 
 <template>
-    <section class="container">
+    <section class="container" id="show-title">
         <div class="row">
             <div class="col-12 mt-4 mb-5 p-0">
                 <h1 class="fs-2 fw-bolder">{{ property.title }}</h1>
@@ -70,7 +70,7 @@ export default {
         </div>
     </section>
 
-    <section class="container">  
+    <section class="container" id="show-img">  
         <div class="row">
             <!-- CAROUSEL VISIBLE ONLY IN MOBILE AND TABLE -->
             <div class="col-12 d-lg-none">
@@ -81,7 +81,7 @@ export default {
         </div> 
     </section>
 
-    <section class="container">
+    <section class="container" id="show-details">
         <div class="row">
             <!-- details -->
             <ShowDetails :property="property"/>
