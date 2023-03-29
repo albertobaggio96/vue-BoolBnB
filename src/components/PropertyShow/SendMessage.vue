@@ -55,7 +55,7 @@ export default {
               </div>
               <div class="mb-3">
                   <label class="form-label" for="message-guest">Scrivi il tuo messaggio</label>
-                  <textarea name="message-guest" id="message-guest"  v-model="messageGuest" class="form-control" required minlength="2" maxlength="100"></textarea>
+                  <textarea name="message-guest" id="message-guest"  v-model="messageGuest" class="form-control" required minlength="2" maxlength="6000"></textarea>
               </div>
               <hr class="my-5">
               <a class="btn button-primary" @click="$emit('send', mailGuest, nameGuest, subjectGuest, messageGuest)">Invia Messaggio</a>
