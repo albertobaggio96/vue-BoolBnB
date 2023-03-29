@@ -54,7 +54,7 @@ export default {
                 body_message: message,
             })
             .then((response) => {
-              console.log(response.data.success)
+              console.log(response.data)
               this.sended = response.data.success
             })
 
@@ -96,7 +96,7 @@ export default {
 
                 <!-- message form -->
                 <div class="row mb-4">
-                    <SendMessage @send="getMessageForm" />
+                    <SendMessage @send="getMessageForm" :sended="sended"/>
                     <PopupForm v-if="sended" />
                 </div>
 
