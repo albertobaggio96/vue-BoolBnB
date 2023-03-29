@@ -4,12 +4,13 @@ import axios from 'axios';
 
 import CardProperty from '../components/shered-components/CardProperty.vue';
 import FiltersApp from '../components/SearchPage/FiltersApp.vue';
-
+import LoaderLogo from '../components/SearchPage/LoaderLogo.vue';
 export default {
     name: 'searchPage',
     components:{
         CardProperty,
-        FiltersApp
+        FiltersApp,
+        LoaderLogo,
     },
     data() {
         return {
@@ -96,9 +97,7 @@ export default {
         <section id="filtered-property">
             <div class="container">
                 <div class="row">
-                    <div v-if="properties === null" class="spinner-border text-secondary" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
+                    <LoaderLogo v-if="properties === null" />
                     <div v-else-if="properties.length === 0 ">
                         NON CI SONO PROPRIETà
                     </div>
@@ -112,5 +111,44 @@ export default {
 </template>
 
 <style lang="scss">
-    
+    .spinner-wrapper{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        img{
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    .scale-up-center {
+	    -webkit-animation: scale-up-center 0.8s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	    animation: scale-up-center 0.8s infinite cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    }
+ 
+    @-webkit-keyframes scale-up-center {
+    0% {
+        -webkit-transform: scale(0.5);
+                transform: scale(0.5);
+    }
+    100% {
+        -webkit-transform: scale(1);
+                transform: scale(1);
+    }
+    }
+    @keyframes scale-up-center {
+    0% {
+        -webkit-transform: scale(0.5);
+                transform: scale(0.5);
+    }
+    100% {
+        -webkit-transform: scale(1);
+                transform: scale(1);
+    }
+    }
+
 </style>
