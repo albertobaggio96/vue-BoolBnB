@@ -58,7 +58,8 @@ export default {
             "Ecco dove ci troviamo"
             )
             marker.setPopup(popup).togglePopup()
-        }        getMessageForm(mail, name, object, message){
+        },
+        getMessageForm(mail, name, object, message){
             axios.post(`${this.urlSlug}/message`, {
                 name: name,
                 mail_from: mail,
