@@ -4,36 +4,28 @@ export default {
 }
 </script>
 <template>
-    <div>
-        <nav class="navbar navbar-expand-lg bg-light">
-            <div class="container">
-                <a class="navbar-brand" href="#">
-                    <img src="../assets/Bool_icon.png" alt="Logo" width="30" height="24"
-                        class="d-inline-block align-text-top">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <nav class="my-nav navbar navbar-expand-lg bg-body-tertiary ps-5 pe-5" data-bs-theme="dark">
+        <div class="container-fluid p-1">
+            <a class="navbar-brand" href="#"> <img src="../assets/Bool_icon.png" alt="Logo" width="30" height="24"
+                    class="d-inline-block align-text-top"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <router-link :to="{ name: 'home' }" class="nav-link"> home </router-link>
+                        <router-link :to="{ name: 'home' }" class="nav-link fs-5 fw-bold  text-dark"> <i class="fa-solid fa-house"></i> Home </router-link>
                     </li>
-                    <!-- <li class="nav-item">
-                            <router-link :to="{ name: 'show'}" class="nav-link"> show </router-link>
-                        </li>
-                        <li class="nav-item">
-                                <router-link :to="{ name: 'search'}" class="nav-link"> results </router-link>
-                            </li>
-                            <li class="nav-item">
-                                <router-link :to="{ name: 'all'}" class="nav-link"> all </router-link>
-                            </li> -->
-                    </ul>
-                </div>
+                </ul>
+                <span class="navbar-text">
+                    <a class="login-a fw-bold m-2 " href="http://127.0.0.1:8000/login">Login</a>
+                    <a class="login-a fw-bold m-2 " href="http://127.0.0.1:8000/register">Iscriviti</a>
+
+                </span>
+
             </div>
-        </nav>
-    </div>
+        </div>
+    </nav>
 </template>
 <style lang="scss"></style>

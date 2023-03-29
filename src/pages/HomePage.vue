@@ -3,6 +3,7 @@ import RouteInput from '../components/HomePage/RouteInput.vue'
 import { store } from '../store'
 
 
+
 export default {
     name: 'HomePage',
     components: {
@@ -31,28 +32,39 @@ export default {
 }
 </script>
 
-<template>
-    <div class="container d-flex justify-content-center">
-        <div class="row">
-            <div class="col-12">
-                <img class="img-fluid" src="../assets/BoolB_B_logo-removebg-preview.png" alt="">
+<template >
+    <div class="background container-fluid">
+
+        <div class="container d-flex justify-content-center">
+            <div class="row">
+                <div class="col-12">
+                    <img class="img-fluid" src="../assets/BoolB_B_logo-removebg-preview.png" alt="">
+                </div>
             </div>
         </div>
+        
+        <main class="d-flex justify-content-center">
+            <RouteInput @address="searchApparament" />
+        </main>
+        
     </div>
-
-    <main class="d-flex justify-content-center">
-        <RouteInput @address="searchApparament" />
-    </main>
 
     <div class="container">
-        <div class="row">
-            <div class="col-12 text-center fw-bold fs-1 m-3">
-                Ecco le nostre proposte!
+            <div class="row">
+                <div class="col-12 text-center fw-bold fs-1 m-3">
+                    Ecco le nostre proposte in evidenza!
+                </div>
             </div>
-        </div>
     </div>
 
-
+    <div class="container">
+            <div class="row">
+                <div class="col-12 text-center fw-bold fs-1 m-3">
+                    Tutti i nostri appartamenti disponibili
+                </div>
+            </div>
+    </div>
+        
 </template>
 
 <style lang="scss">

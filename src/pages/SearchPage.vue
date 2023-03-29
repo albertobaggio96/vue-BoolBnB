@@ -100,7 +100,7 @@ export default {
                         <span class="visually-hidden">Loading...</span>
                     </div>
                     <div v-else-if="properties.length === 0 ">
-                        NON CI SONO PROPRIETà
+                        NON CI SONO PROPRIETA'
                     </div>
                     <div v-else class="col-sm-12 col-md-6 col-lg-4 col-xl-3"  v-for="property in properties">
                       <CardProperty :property="property" @showSlug="getShowParams"/>
