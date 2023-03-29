@@ -12,7 +12,6 @@ export default {
             store,
             property: Object,
             urlSlug: `${store.apiUri}/${store.show}`,
-            urlMessage: `${this.urlSlug}/message`,
             mailGuest: '',
             nameGuest: '',
             subjectGuest: '',
@@ -34,7 +33,7 @@ export default {
             });  
         },
         getMessageForm(mail, name, object, message){
-            axios.post(this.urlMessage, {
+            axios.post(`${this.urlSlug}/message`, {
                 name: name,
                 mail_from: mail,
                 subject: object,
