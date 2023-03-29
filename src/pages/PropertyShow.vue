@@ -26,6 +26,7 @@ export default {
             nameGuest: '',
             subjectGuest: '',
             messageGuest: '',
+            sended : false
         }
     },
     methods: {
@@ -50,9 +51,15 @@ export default {
                 body_message: message,
             })
             .then((response) => {
-              console.log(response)
+              console.log(response.data.success)
+              this.sended = response.data.success
             })
+
+            setTimeout(this.endNotficiation, 3000);
         },
+        endNotficiation(){
+            return this.sended = false
+        }
    },
     created() {
         this.getPropertyApi()
@@ -80,7 +87,6 @@ export default {
             <ImagesDesktopMode :property="property" />
         </div> 
     </section>
-
     <section class="container" id="show-details">
         <div class="row">
             <!-- details -->
@@ -91,7 +97,12 @@ export default {
                 <GeoMap :lon="property.longitude" :lat="property.latitude"/>
 
                 <!-- message form -->
-                <SendMessage @send="getMessageForm" />
+                <div class="row mb-4 position-relative">
+                    <SendMessage @send="getMessageForm" />
+                    <div v-if="sended" class="position-absolute">Messaggio inviato con successo</div>
+                </div>
+
+
 
             </div>
         </div>

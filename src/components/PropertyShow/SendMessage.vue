@@ -21,7 +21,6 @@ export default {
 </script>
 
 <template>
-  <div class="row h-100 mb-4">
     <div class="col-12">
       <div class="card w-100">
         <div class="card-body">
@@ -53,7 +52,6 @@ export default {
         </div>
       </div>
     </div>
-</div>
 </template>
 
 <style lang="scss" scoped>
