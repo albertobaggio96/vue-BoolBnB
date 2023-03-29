@@ -8,6 +8,14 @@ export default {
       messageGuest: ''
     }
   },
+  methods:{
+    getEmptyForm(){
+      this.mailGuest = '',
+      this.nameGuest= '',
+      this.subjectGuest= '',
+      this.messageGuest= ''
+    }
+  }
 }
 
 </script>
@@ -40,7 +48,7 @@ export default {
                   <textarea name="message-guest" id="message-guest"  v-model="messageGuest" class="form-control" required></textarea>
               </div>
               <hr class="my-5">
-              <a class="btn button-primary" @click="$emit('send', mailGuest, nameGuest, subjectGuest, messageGuest)">Invia Messaggio</a>
+              <a class="btn button-primary" @click="$emit('send', mailGuest, nameGuest, subjectGuest, messageGuest), getEmptyForm()">Invia Messaggio</a>
           </form>
         </div>
       </div>
