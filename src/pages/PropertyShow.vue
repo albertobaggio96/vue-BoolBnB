@@ -1,7 +1,8 @@
 <script>
 import {store} from '../store.js'
 import axios from 'axios'
-
+import SendMessage from '../components/PropertyShow/SendMessage.vue'
+import tt from '@tomtom-international/web-sdk-maps'
 
 export default {
     name: 'PropertyShow',
@@ -28,11 +29,38 @@ export default {
                // always executed
             });  
         },
+        getLocation(){
+            const coordinates = [this.property.longitude, this.property.latitude]
+            const map = tt.map({
+                key: 'z9ITZYm8elo1w49sBk24ssyqYdIyD1lG',
+                container: 'map',
+                center: coordinates,
+                zoom: 15,
+            });
+            map.addControl(new tt.FullscreenControl());
+            map.addControl(new tt.NavigationControl());
+
+            const marker = new tt.Marker().setLngLat(coordinates).addTo(map)
+            const popupOffsets = {
+            top: [0, 0],
+            bottom: [0, -70],
+            "bottom-right": [0, -70],
+            "bottom-left": [0, -70],
+            left: [25, -35],
+            right: [-25, -35],
+            }
+            const popup = new tt.Popup({ offset: popupOffsets }).setHTML(
+            "Ecco dove ci troviamo"
+            )
+            marker.setPopup(popup).togglePopup()
+        }
     },
     created() {
         this.getPropertyApi()
-        this.maps()
     },
+    mounted(){
+        this.getLocation()
+    }
 }
 </script>
 
@@ -142,7 +170,15 @@ export default {
                 </div>
                 
                 <div class="col-12 col-md-8 offset-md-3 col-lg-4 offset-lg-0">
-                    <div class="row align-content-center h-100 my-4">
+                    <!-- MAP -->
+                    <div class="map-wrapper container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <div id='map' class='map'></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row h-100 mb-4">
                         <div class="col-12">
                             <div class="card w-100">
                                 <div class="card-body">
@@ -159,12 +195,11 @@ export default {
             </div>
         </div>
     </section>
-    
+
 </template>
 
 
-<style lang="scss" scoped>
-    @use "@tomtom-international/web-sdk-maps" as*; 
+<style lang="scss" scoped> 
     @use '../style/partials/variables' as*;
     .top-img{
         border-top-left-radius: 10px;
@@ -221,6 +256,14 @@ export default {
     .modal-body {
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
+    }
+
+    .map-wrapper{
+
+        margin: 5rem 0;
+        .map{
+            height: 250px;
+        }
     }
   
 </style>
