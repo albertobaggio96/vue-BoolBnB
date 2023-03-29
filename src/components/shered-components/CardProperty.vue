@@ -1,8 +1,13 @@
 <script>
 import { objectToString } from '@vue/shared';
 
+import MobileCarouselVue from './MobileCarousel.vue';
+
 export default {
   name: 'CardProperty',
+  components:{
+    MobileCarouselVue,
+  },
   props:{
     'property': {
       type: Object,
@@ -28,34 +33,7 @@ export default {
 <template>
   <router-link @click="$emit('showSlug', property.slug)" :to="{ name: 'show' }" class="text-black text-decoration-none">
     <div class="card border-0 mb-4">
-      <div :id="'carouselExampleIndicators'+ property.id" class="carousel carousel-dark slide" data-bs-ride="false">
-        <div class="carousel-indicators">
-          <button 
-            v-for="id, index in property.images"  
-            type="button" 
-            :data-bs-target="'#carouselExampleIndicators' + property.id" 
-            :data-bs-slide-to="index" 
-            :class="(index == 0) ? 'active' : ''" 
-            class="bg-white"
-            :aria-current="(index == 0) ? 'true' : ''" 
-            :aria-label="'Slide ' + (index + 1)">
-          </button>
-          
-        </div>
-        <div class="carousel-inner">  
-          <div class="carousel-item" :class="(index == 0) ? 'active' : ''" v-for="image, index in property.images">
-            <img :src="(image.path) ? 'http://127.0.0.1:8000/storage/'+image.path : property.cover_img" alt="" class="custom-img d-block w-100">
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" :data-bs-target="'#carouselExampleIndicators'+ property.id" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" :data-bs-target="'#carouselExampleIndicators' + property.id" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
+      <MobileCarouselVue :property = "property"/>
       <article>
         <div class="d-flex align-items-center justify-content-between p-1">
           <h3 class="fs-6 fw-bold mb-0 h-100">{{ (property.address.split('-')[1]) ? property.address.split('-')[1] : property.address.split(' ').slice(-1)[0] }}</h3>
