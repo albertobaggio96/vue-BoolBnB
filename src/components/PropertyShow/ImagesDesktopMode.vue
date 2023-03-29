@@ -21,7 +21,7 @@ export default {
           
       <div class="col-6 h-100 d-flex flex-wrap p-1 d-none d-lg-inline-flex position-relative">
         <div class="wrapper-img" v-for="image, index in property.images.slice(1, 5)" :class="'wrapper'+index">
-          <img :src="'http://127.0.0.1:8000/storage/'+image.path" class="img-fluid h-100 test" :class="'custom-img'+index" alt="">
+          <img :src="'http://127.0.0.1:8000/storage/'+image.path" class="img-fluid h-100" :class="'custom-img'+index" alt="">
         </div>  
         <button type="button" class="btn button-outline" data-bs-toggle="modal" data-bs-target="#exampleModal"><font-awesome-icon icon="fa-solid fa-maximize" /> Mostra tutte le foto</button>
       </div>
