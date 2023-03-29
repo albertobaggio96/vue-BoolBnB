@@ -1,11 +1,22 @@
 <script>
 export default {
+  name:'SendMessage',
+  props:[
+    'sended'
+  ],
   data() {
     return {
       mailGuest : '',
       nameGuest: '',
       subjectGuest: '',
       messageGuest: ''
+    }
+  },
+  watch: {
+    sended(newValue){
+      if(newValue === true){
+        this.getEmptyForm()
+      }
     }
   },
   methods:{
@@ -47,7 +58,7 @@ export default {
                   <textarea name="message-guest" id="message-guest"  v-model="messageGuest" class="form-control" required></textarea>
               </div>
               <hr class="my-5">
-              <a class="btn button-primary" @click="$emit('send', mailGuest, nameGuest, subjectGuest, messageGuest), getEmptyForm()">Invia Messaggio</a>
+              <a class="btn button-primary" @click="$emit('send', mailGuest, nameGuest, subjectGuest, messageGuest)">Invia Messaggio</a>
           </form>
         </div>
       </div>
