@@ -12,6 +12,10 @@ export default {
             store,
             property: Object,
             urlSlug: store.apiUri + '/' + store.show,
+            mailGuest: '',
+            nameGuest: '',
+            subjectGuest: '',
+            messageGuest: '',
         }
     },
     methods: {
@@ -27,7 +31,18 @@ export default {
             .finally(function () {
                // always executed
             });  
-        }
+        },
+        getMessageForm(mail, name, object, message){
+            axios.post(`${this.urlSlug}/message`, {
+                name: name,
+                mail_from: mail,
+                subject: object,
+                body_message: message,
+            })
+            .then((response) => {
+              console.log(response)
+            })
+        },
     },
     created() {
         this.getPropertyApi()
@@ -129,7 +144,8 @@ export default {
                                     </div>
                                     <hr>
 
-                                    <SendMessage :url="urlSlug" />
+                                    <SendMessage @send="getMessageForm" />
+                                    {{ mailGuest}} {{ nameGuest }} {{ subjectGuest }} {{ messageGuest }}
                                 </div>
                             </div>
                         </div>

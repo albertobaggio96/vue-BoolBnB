@@ -7,14 +7,14 @@ import CardProperty from '../components/shered-components/CardProperty.vue';
 // 
 
 // !!!!!!!!!!!!!!!!!!!!!!!!importare
-import SendMessage from '../components/PropertyShow/SendMessage.vue'
+// import SendMessage from '../components/PropertyShow/SendMessage.vue'
 
 export default {
   name: 'AllPropertyPage',
 
   components: {
     CardProperty,
-    SendMessage
+    // SendMessage
   },
 
   data(){
@@ -23,10 +23,10 @@ export default {
       property: null,
 
       //!!!!!!!!!!!!!!!!!! importare
-      mailGuest : '',
-      nameGuest: '',
-      subjectGuest: '',
-      messageGuest: ''
+      // mailGuest : '',
+      // nameGuest: '',
+      // subjectGuest: '',
+      // messageGuest: ''
     }
   },
 
@@ -45,12 +45,12 @@ export default {
     });
     },
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!! importare
-    getMessageForm(mail, name, object, message){
-      this.mailGuest = mail
-      this.nameGuest = name
-      this.subjectGuest = object
-      this.messageGuest = message
-    }
+    // getMessageForm(mail, name, object, message){
+    //   this.mailGuest = mail
+    //   this.nameGuest = name
+    //   this.subjectGuest = object
+    //   this.messageGuest = message
+    // }
   },
 
   created() {
@@ -64,9 +64,9 @@ export default {
     <CardProperty :property="property"/>
 
     <!-- !!!!!!!!!!!!!!! importare -->
-    <SendMessage @send="getMessageForm"/>
+    <!-- <SendMessage @send="getMessageForm"/> -->
 
-    {{ mailGuest}} {{ nameGuest }} {{ subjectGuest }} {{ messageGuest }}
+    <!-- {{ mailGuest}} {{ nameGuest }} {{ subjectGuest }} {{ messageGuest }} -->
   </main>
 </template>
 
