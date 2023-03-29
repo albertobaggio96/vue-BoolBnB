@@ -1,8 +1,5 @@
 <script>
 export default {
-  // props:[
-  //   'url',
-  // ],
   data() {
     return {
       mailGuest : '',
@@ -11,21 +8,6 @@ export default {
       messageGuest: ''
     }
   },
-  methods: {
-    // SendMessage() {
-    //   axios.get(this.url , {
-    //     params: {
-    //       name: this.nameGuest,
-    //       mail_form: this.mailGuest,
-    //       subject: this.subjectGuest,
-    //       body_message: this.messageGuest,
-    //     }
-    //   })
-    //   .then((response) => {
-    //     console.log(response)
-    //   })
-    // }
-  }
 }
 
 </script>
