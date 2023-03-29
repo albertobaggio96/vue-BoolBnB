@@ -9,12 +9,13 @@
         <div class="border1"></div>
         <div class="border2"></div>
         <img src="../../assets/Bool_icon.png" class="img-fluid try" alt="">
-        <h6>Messaggio inviato!</h6>
+        <h1 class="">Messaggio inviato!</h1>
     </div>
 </template>
 
 <style lang="scss">
      @use '../../style/partials/variables' as*;
+     
 
     .wrapper-popup{
         z-index: 1;
@@ -52,11 +53,16 @@
             transform: translate(-50%, -50%);
         }
 
-        h6{
+        h1{
+            width: 100%;
+            text-align: center;
             position: absolute;
             bottom: 0;
             left: 50%;
             transform: translate(-50%);
+            text-shadow: 3px 3px 2px rgba(144, 116, 255, 1),16px 5px 24px rgba(93, 34, 255, 1);
+            color: $primary-purple;
+            font-size: 1.8rem;
         }
     }
     @keyframes  myAnimationLeft {

@@ -74,8 +74,8 @@ export default {
 <template>
     
     
+    <TitleShow :property="property" />
     <section class="container" id="show-img">  
-        <TitleShow :property="property" />
         <div class="row">
             <!-- CAROUSEL VISIBLE ONLY IN MOBILE AND TABLE -->
             <div class="col-12 d-lg-none">
@@ -97,7 +97,7 @@ export default {
                 <!-- message form -->
                 <div class="row mb-4">
                     <SendMessage @send="getMessageForm" />
-                    <PopupForm />
+                    <PopupForm v-if="sended" />
                 </div>
 
 
