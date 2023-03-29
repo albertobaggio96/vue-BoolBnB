@@ -7,7 +7,8 @@ import SendMessage from '../components/PropertyShow/SendMessage.vue'
 import ImagesDesktopMode from '../components/PropertyShow/ImagesDesktopMode.vue'
 import ShowDetails from '../components/PropertyShow/ShowDetails.vue'
 import GeoMap from '../components/PropertyShow/GeoMap.vue'
-
+import PopupForm from '../components/PropertyShow/PopupForm.vue'
+import TitleShow from '../components/PropertyShow/TitleShow.vue'
 export default {
     name: 'PropertyShow',
     components:{
@@ -16,6 +17,8 @@ export default {
         ImagesDesktopMode, 
         ShowDetails,
         GeoMap,
+        PopupForm,
+        TitleShow,
     },
     data() {
         return {
@@ -26,6 +29,7 @@ export default {
             nameGuest: '',
             subjectGuest: '',
             messageGuest: '',
+            sended : false
         }
     },
     methods: {
@@ -50,9 +54,15 @@ export default {
                 body_message: message,
             })
             .then((response) => {
-              console.log(response)
+              console.log(response.data.success)
+              this.sended = response.data.success
             })
+
+            setTimeout(this.endNotficiation, 5000);
         },
+        endNotficiation(){
+            return this.sended = false
+        }
    },
     created() {
         this.getPropertyApi()
@@ -62,14 +72,9 @@ export default {
 
 
 <template>
-    <section class="container" id="show-title">
-        <div class="row">
-            <div class="col-12 mt-4 mb-5 p-0">
-                <h1 class="fs-2 fw-bolder">{{ property.title }}</h1>
-            </div>
-        </div>
-    </section>
-
+    
+    
+    <TitleShow :property="property" />
     <section class="container" id="show-img">  
         <div class="row">
             <!-- CAROUSEL VISIBLE ONLY IN MOBILE AND TABLE -->
@@ -80,7 +85,6 @@ export default {
             <ImagesDesktopMode :property="property" />
         </div> 
     </section>
-
     <section class="container" id="show-details">
         <div class="row">
             <!-- details -->
@@ -91,10 +95,21 @@ export default {
                 <GeoMap :lon="property.longitude" :lat="property.latitude"/>
 
                 <!-- message form -->
-                <SendMessage @send="getMessageForm" />
+                <div class="row mb-4">
+                    <SendMessage @send="getMessageForm" />
+                    <PopupForm v-if="sended" />
+                </div>
 
+
+                
             </div>
         </div>
     </section>
 
 </template>
+
+
+<style lang="scss" scoped>
+   
+
+</style>

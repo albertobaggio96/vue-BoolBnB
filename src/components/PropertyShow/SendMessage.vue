@@ -8,12 +8,19 @@ export default {
       messageGuest: ''
     }
   },
+  methods:{
+    getEmptyForm(){
+      this.mailGuest = '',
+      this.nameGuest= '',
+      this.subjectGuest= '',
+      this.messageGuest= ''
+    }
+  }
 }
 
 </script>
 
 <template>
-  <div class="row h-100 mb-4">
     <div class="col-12">
       <div class="card w-100">
         <div class="card-body">
@@ -24,28 +31,27 @@ export default {
           <form class="text-center">
               <div class="mb-3">
                   <label for="mail-guest" class="form-label">Inserisci la tua Email</label>
-                  <input class="form-control" type="mail" id="mail-guest" name="mail-guest" v-model="mailGuest" required>
+                  <input class="form-control" type="mail" id="mail-guest" name="mail-guest" v-model="mailGuest" required minlength="2" maxlength="20">
               </div>
               <div class="mb-3">
                   <label for="name-guest" class="form-label">Nome</label>
-                  <input class="form-control" type="text" id="name-guest" name="name-guest" v-model="nameGuest" required>
+                  <input class="form-control" type="text" id="name-guest" name="name-guest" v-model="nameGuest" required minlength="2" maxlength="20">
               </div>
               <div class="mb-3">
                   <label for="subject-guest" class="form-label">Oggetto del messaggio</label>
-                  <input class="form-control" type="text" id="subject-guest" name="subject-guest" v-model="subjectGuest" required>
+                  <input class="form-control" type="text" id="subject-guest" name="subject-guest" v-model="subjectGuest" required minlength="2" maxlength="30">
         
               </div>
               <div class="mb-3">
                   <label class="form-label" for="message-guest">Scrivi il tuo messaggio</label>
-                  <textarea name="message-guest" id="message-guest"  v-model="messageGuest" class="form-control" required></textarea>
+                  <textarea name="message-guest" id="message-guest"  v-model="messageGuest" class="form-control" required minlength="2" maxlength="100"></textarea>
               </div>
               <hr class="my-5">
-              <a class="btn button-primary" @click="$emit('send', mailGuest, nameGuest, subjectGuest, messageGuest)">Invia Messaggio</a>
+              <a class="btn button-primary" @click="$emit('send', mailGuest, nameGuest, subjectGuest, messageGuest), getEmptyForm()">Invia Messaggio</a>
           </form>
         </div>
       </div>
     </div>
-</div>
 </template>
 
 <style lang="scss" scoped>
