@@ -1,4 +1,6 @@
 <script>
+import { Popup } from 'mapbox-gl'
+
 export default {
   name:'SendMessage',
   props:[
@@ -9,7 +11,8 @@ export default {
       mailGuest : '',
       nameGuest: '',
       subjectGuest: '',
-      messageGuest: ''
+      messageGuest: '',
+      check : false
     }
   },
   watch: {
@@ -26,17 +29,19 @@ export default {
       this.subjectGuest= '',
       this.messageGuest= ''
     },
-    formValidation(input){
+    formValidation(input, number){
         if(input.length == 0){
             return ""
-        }else if(input.length < 4){
+        }else if(input.length < number){
           return "is-invalid"
         }
+          this.check = false
           return "is-valid"
     },
     validateMail(email){
       const validRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
       if (email.match(validRegex)) {
+        this.check = false
         return "is-valid";
       } else if(email.length == 0) {
         return "";
@@ -46,11 +51,14 @@ export default {
     },
     isValidate(){
       if(this.validateMail(this.mailGuest) && this.formValidation(this.nameGuest) && this.formValidation(this.subjectGuest) && this.formValidation(this.messageGuest)){
-          return ""
+          return true
       }else{
-        return "pe-none"
+        return false
       }
-    }
+    },
+    popup(){
+      this.check = true
+    },
   }
 }
 
@@ -62,29 +70,34 @@ export default {
         <div class="card-body">
           <div class="title mt-3 mb-5 text-center">
             <h5 class="card-title">Invia un messaggio all'Host</h5>
+            <h1 v-if="check">Riempi i campi</h1>
+
           </div>
           <hr>
           <form class="">
               <div class="mb-3 text-center">
-                  <label for="mail-guest" class="form-label">Inserisci la tua Email</label>
-                  <input class="form-control" type="email" id="mail-guest" name="mail-guest" :class="validateMail(mailGuest)" v-model="mailGuest" required minlength="2" maxlength="100">
+                  <input class="form-control" type="email" id="mail-guest" name="mail-guest" :class="validateMail(mailGuest), check ? 'is-invalid' : ''" v-model="mailGuest" required minlength="2" maxlength="100">
                 </div>
-                <span v-if="validateMail(mailGuest) === 'is-invalid' " class="text-danger text-start">inserisci una mail valida</span>
+                <span v-if="validateMail(mailGuest) === 'is-invalid' || check " class="text-danger text-start">inserisci una mail valida</span>
               <div class="mb-3 text-center">
                   <label for="name-guest" class="form-label">Nome</label>
-                  <input class="form-control" type="text" id="name-guest" name="name-guest" :class="formValidation(nameGuest)" v-model="nameGuest" required minlength="2" maxlength="100">
+                  <input class="form-control" type="text" id="name-guest" name="name-guest" :class="formValidation(nameGuest, 4)" v-model="nameGuest" required minlength="2" maxlength="100">
+                  <span v-if="formValidation(nameGuest, 4) === 'is-invalid' || check " class="text-danger text-start">almeno 4 carratteri</span>
               </div>
               <div class="mb-3 text-center">
                   <label for="subject-guest" class="form-label">Oggetto del messaggio</label>
-                  <input class="form-control" type="text" id="subject-guest" name="subject-guest" :class="formValidation(subjectGuest)" v-model="subjectGuest"  required minlength="2" maxlength="100">
+                  <input class="form-control" type="text" id="subject-guest" name="subject-guest" :class="formValidation(subjectGuest, 4), check ? 'is-invalid' : ''" v-model="subjectGuest"  required minlength="2" maxlength="100">
+                  <span v-if="formValidation(subjectGuest, 4) === 'is-invalid' || check " class="text-danger text-start">almeno 4 carratteri</span>
+
               </div>
               <div class="mb-3 text-center">
                   <label class="form-label" for="message-guest">Scrivi il tuo messaggio</label>
-                  <textarea name="message-guest" id="message-guest"  v-model="messageGuest" class="form-control" :class="formValidation(messageGuest)" required minlength="20" maxlength="6000"></textarea>
+                  <textarea name="message-guest" id="message-guest"  v-model="messageGuest" class="form-control" :class="formValidation(messageGuest, 20), check ? 'is-invalid' : ''" required minlength="20" maxlength="6000"></textarea>
+                  <span v-if="formValidation(messageGuest, 20) === 'is-invalid' || check " class="text-danger text-start">almeno 20 carratteri</span>
               </div>
               <hr class="my-5 text-center">
               <div class="text-center">
-                <a class="btn button-primary" :class="isValidate()" @click=" $emit('send', mailGuest, nameGuest, subjectGuest, messageGuest)">Invia Messaggio</a>
+                <a class="btn button-primary" @click="(isValidate()) ? $emit('send', mailGuest, nameGuest, subjectGuest, messageGuest) : popup()">Invia Messaggio</a>
                 {{ isValidate() }}
               </div>
           </form>
