@@ -98,31 +98,30 @@ export default {
             <h3 class="card-title">Invia un messaggio all'Host</h3>
           </div>
           <hr>
-          <form class="">
+          <form class=""> 
               <div class="mb-3 text-center">
-                  <label for="nameGuest" class="form-label">Inserisci la tua mail</label>
-                  <input class="form-control" type="email" id="mail-guest" name="mail-guest" :class="validateMail(mailGuest, checkEmail), checkEmail ? 'is-invalid' : ''" v-model="mailGuest" required minlength="2" maxlength="100">
+                  <label for="nameGuest" class="form-label my-3">Inserisci la tua mail</label>
+                  <input class="form-control" type="email" id="mail-guest" name="mail-guest" :class="validateMail(mailGuest, checkEmail), checkEmail ? 'is-invalid' : ''" v-model="mailGuest" required minlength="2" maxlength="100" placeholder="">
                 </div>
                 <span v-if="validateMail(mailGuest) === 'is-invalid' || checkEmail " class="text-error text-start">*Inserisci una mail valida</span>
               <div class="mb-3 text-center">
-                  <label for="name-guest" class="form-label">Nome</label>
-                  <input class="form-control" type="text" id="name-guest" name="name-guest" :class="nameValidation(nameGuest, 4), checkName ? 'is-invalid' : ''" v-model="nameGuest" required minlength="2" maxlength="100">
+                  <label for="name-guest" class="form-label my-3">Nome</label>
+                  <input class="form-control" type="text" id="name-guest" name="name-guest" :class="nameValidation(nameGuest, 2), checkName ? 'is-invalid' : ''" v-model="nameGuest" required minlength="2" maxlength="100">
               </div>
-                <span v-if="nameValidation(nameGuest, 4) === 'is-invalid' || checkName " class="text-error text-start">*Almeno 4 carratteri</span>
+                <span v-if="nameValidation(nameGuest, 4) === 'is-invalid' || checkName " class="text-error text-start">*Inserisci un nome con almeno 2 caratteri</span>
               <div class="mb-3 text-center">
-                  <label for="subject-guest" class="form-label">Oggetto del messaggio</label>
+                  <label for="subject-guest" class="form-label my-3">Oggetto del messaggio</label>
                   <input class="form-control" type="text" id="subject-guest" name="subject-guest" :class="subjectValidation(subjectGuest, 4, checkSubject), checkSubject ? 'is-invalid' : ''" v-model="subjectGuest"  required minlength="2" maxlength="100">
               </div>
-                <span v-if="subjectValidation(subjectGuest, 4) === 'is-invalid' || checkSubject " class="text-error text-start">*Almeno 4 carratteri</span>
+                <span v-if="subjectValidation(subjectGuest, 4) === 'is-invalid' || checkSubject " class="text-error text-start">*Inserisci un oggetto esplicativo</span>
               <div class="mb-3 text-center">
-                  <label class="form-label" for="message-guest">Scrivi il tuo messaggio</label>
+                  <label class="form-label my-3" for="message-guest ">Scrivi il tuo messaggio</label>
                   <textarea name="message-guest" id="message-guest"  v-model="messageGuest" class="form-control" :class="messageValidation(messageGuest, 20), checkMessage ? 'is-invalid' : ''" required minlength="20" maxlength="6000"></textarea>
               </div>
-                <span v-if="messageValidation(messageGuest, 20) === 'is-invalid' || checkMessage " class="text-error text-start">*Almeno 20 carratteri</span>
+                <span v-if="messageValidation(messageGuest, 20) === 'is-invalid' || checkMessage " class="text-error text-start">*Inserisci una descrizione di almeno 20 caratteri</span>
               <hr class="my-5 text-center">
               <div class="text-center">
                 <a class="btn button-primary" @click="(isValidate()) ? $emit('send', mailGuest, nameGuest, subjectGuest, messageGuest) : checkErrors()">Invia Messaggio</a>
-                {{ isValidate() }}
               </div>
           </form>
         </div>
