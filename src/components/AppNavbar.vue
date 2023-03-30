@@ -19,7 +19,7 @@ export default {
                     </li>
                 </ul>
                 <span class="navbar-text">
-                    <a class="login-a fw-bold m-2 " href="http://127.0.0.1:8000/login">Login</a>
+                    <a class="login-a fw-bold m-2 " href="http://127.0.0.1:8000/admin">Login</a>
                     <a class="login-a fw-bold m-2 " href="http://127.0.0.1:8000/register">Iscriviti</a>
 
                 </span>
