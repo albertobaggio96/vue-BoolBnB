@@ -81,7 +81,7 @@ export default {
                 <span v-if="validateMail(mailGuest) === 'is-invalid' || check " class="text-danger text-start">inserisci una mail valida</span>
               <div class="mb-3 text-center">
                   <label for="name-guest" class="form-label">Nome</label>
-                  <input class="form-control" type="text" id="name-guest" name="name-guest" :class="formValidation(nameGuest, 4)" v-model="nameGuest" required minlength="2" maxlength="100">
+                  <input class="form-control" type="text" id="name-guest" name="name-guest" :class="formValidation(nameGuest, 4), check ? 'is-invalid' : ''" v-model="nameGuest" required minlength="2" maxlength="100">
                   <span v-if="formValidation(nameGuest, 4) === 'is-invalid' || check " class="text-danger text-start">almeno 4 carratteri</span>
               </div>
               <div class="mb-3 text-center">
