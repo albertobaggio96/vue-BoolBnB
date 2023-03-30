@@ -4,7 +4,9 @@ export default {
   name: 'ServiceSelection',
   props:[
     'services',
-    'selectedIcon'
+    'selectedIcon',
+    'selectedBeds',
+    'selectedRooms'
   ],
   data() {
     return {
@@ -21,13 +23,16 @@ export default {
 </script>
 
 <template>
-
   <!-- Button trigger modal -->
   <div class="container">
     <div class="row py-3 mb-4">
       <div class="selected-filters col-12 col-md-9">
-        <span v-if="selectedIcon.length > 0" class="fs-4 me-3">Filtri attivi:</span>
-        <span v-if="selectedIcon.length > 0" v-for="filter in selectedIcon" class="me-3"><font-awesome-icon class="fs-4" :icon="filter" /> </span>
+        <span v-if="selectedIcon.length > 0 || selectedBeds > 0 || selectedRooms > 0" class="fs-4 me-3">Filtri attivi:</span>
+        <span v-if="selectedIcon.length > 0" v-for="filter in selectedIcon" class="me-3"><font-awesome-icon class="fs-4 icon-color" :icon="filter" /></span>
+        <font-awesome-icon class="fs-4 icon-color me-3" icon="fa-solid fa-grip-lines-vertical" />
+        <span v-if="selectedBeds > 0" class="me-2 fs-4 icon-bg-color px-1 text-white"> {{ selectedBeds == 6 ? '6+' : selectedBeds}} <font-awesome-icon class="fs-4 text-white" icon="fa-solid fa-bed" /></span>
+        <font-awesome-icon class="fs-4 icon-color me-3" icon="fa-solid fa-grip-lines-vertical" />
+        <span v-if="selectedRooms > 0" class="me-3 fs-4 icon-bg-color px-1 text-white"> {{ selectedRooms == 6 ? '6+' : selectedBeds }} <font-awesome-icon class="fs-4 text-white" icon="fa-solid fa-person-shelter" /></span>
       </div>
       <div class="col-12 col-md-3 text-end mt-2 mt-md-0">
         <button type="button" class="btn button-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -151,7 +156,7 @@ export default {
           </div>
         </div>
         <div class="modal-footer d-flex justify-content-between">
-          <a @click="checkedServices = []" class="btn button-reset">Reset</a>
+          <a @click="checkedServices = [] , nBeds = null, nRooms = null" class="btn button-reset">Reset</a>
           <button type="button" class="btn button-secondary"  @click="$emit('servicesFilter', checkedServices, nBeds, nRooms, radius)" data-bs-dismiss="modal">Salva</button>
         </div>
       </div>
@@ -206,6 +211,14 @@ export default {
     }
   }
 
+  .icon-color{
+    color: $light-purple;
+  }
+
+  .icon-bg-color{
+    background-color: $secondary-purple;
+    border-radius: 10px;
+  }
   
   input#oneRoom:checked ~ .option-1,
   input#twoRoom:checked ~ .option-2,

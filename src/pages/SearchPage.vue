@@ -64,14 +64,18 @@ export default {
 
             if(beds){
                 this.store.storeParams.min_beds = beds;
+                this.store.selectedBeds = this.store.storeParams.min_beds
             } else{
-                delete this.store.storeParams.min_beds 
+                delete this.store.storeParams.min_beds
+                this.store.selectedBeds = 0
             }
 
             if(rooms){
                 this.store.storeParams.min_rooms = rooms;
+                this.store.selectedRooms = this.store.storeParams.min_rooms
             } else{
                 delete this.store.storeParams.min_rooms 
+                this.store.selectedRooms = 0
             }
 
             if(radius){
@@ -106,7 +110,7 @@ export default {
 
         <!-- sezione della selezione dei servizi -->
         <section id="services-selection">
-            <FiltersApp :services="services" @servicesFilter="getServicesFilter" :selectedIcon="store.selectedIcon"/>
+            <FiltersApp :services="services" @servicesFilter="getServicesFilter" :selectedBeds="store.selectedBeds" :selectedRooms="store.selectedRooms" :selectedIcon="store.selectedIcon"/>
         </section>
         <!-- risultato delle proprietà selezionate -->
         <section id="filtered-property">
