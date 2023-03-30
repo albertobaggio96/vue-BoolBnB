@@ -43,6 +43,13 @@ export default {
       }else{
         return "is-invalid"
       }
+    },
+    isValidate(){
+      if(this.validateMail(this.mailGuest) && this.formValidation(this.nameGuest) && this.formValidation(this.subjectGuest) && this.formValidation(this.messageGuest)){
+          return ""
+      }else{
+        return "pe-none"
+      }
     }
   }
 }
@@ -63,20 +70,23 @@ export default {
                   <input class="form-control" type="email" id="mail-guest" name="mail-guest" :class="validateMail(mailGuest)" v-model="mailGuest" required minlength="2" maxlength="100">
                 </div>
                 <span v-if="validateMail(mailGuest) === 'is-invalid' " class="text-danger text-start">inserisci una mail valida</span>
-              <div class="mb-3">
+              <div class="mb-3 text-center">
                   <label for="name-guest" class="form-label">Nome</label>
                   <input class="form-control" type="text" id="name-guest" name="name-guest" :class="formValidation(nameGuest)" v-model="nameGuest" required minlength="2" maxlength="100">
               </div>
-              <div class="mb-3">
+              <div class="mb-3 text-center">
                   <label for="subject-guest" class="form-label">Oggetto del messaggio</label>
                   <input class="form-control" type="text" id="subject-guest" name="subject-guest" :class="formValidation(subjectGuest)" v-model="subjectGuest"  required minlength="2" maxlength="100">
               </div>
-              <div class="mb-3">
+              <div class="mb-3 text-center">
                   <label class="form-label" for="message-guest">Scrivi il tuo messaggio</label>
-                  <textarea name="message-guest" id="message-guest"  v-model="messageGuest" class="form-control" :class="formValidation(messageGuest)" required minlength="2" maxlength="6000"></textarea>
+                  <textarea name="message-guest" id="message-guest"  v-model="messageGuest" class="form-control" :class="formValidation(messageGuest)" required minlength="20" maxlength="6000"></textarea>
               </div>
-              <hr class="my-5">
-              <a class="btn button-primary" @click="$emit('send', mailGuest, nameGuest, subjectGuest, messageGuest)">Invia Messaggio</a>
+              <hr class="my-5 text-center">
+              <div class="text-center">
+                <a class="btn button-primary" :class="isValidate()" @click=" $emit('send', mailGuest, nameGuest, subjectGuest, messageGuest)">Invia Messaggio</a>
+                {{ isValidate() }}
+              </div>
           </form>
         </div>
       </div>
