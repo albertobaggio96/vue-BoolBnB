@@ -45,68 +45,68 @@ export default {
               <div class="col-12">
                 <h4>Stanze e letti:</h4>
               </div>
-              <!-- CHOSE BEDS -->
-              <div class="col-12">
-                <h6>Letti</h6>
-              </div>
-                <div class="wrapper col-12">
-                  <input type="radio" name="beds" id="oneBed" value="1" v-model="nBeds">
-                  <input type="radio" name="beds" id="twoBed" value="2" v-model="nBeds">
-                  <input type="radio" name="beds" id="threeBed" value="3"  v-model="nBeds">
-                  <input type="radio" name="beds" id="fourBed" value="4"  v-model="nBeds">
-                  <input type="radio" name="beds" id="fiveBed" value="5"  v-model="nBeds">
-                  <input type="radio" name="beds" id="sixPlusBed" value="6"  v-model="nBeds">
-
-                  <label for="oneBed" class="option option-1 py-1">
-                    <span>1</span>
-                  </label>
-                  <label for="twoBed" class="option option-2 py-1">
-                    <span>2</span>
-                  </label>
-                  <label for="threeBed" class="option option-3 py-1">
-                    <span>3</span>
-                  </label>
-                  <label for="fourBed" class="option option-4 py-1">
-                    <span>4</span>
-                  </label>
-                  <label for="fiveBed" class="option option-5 py-1">
-                    <span>5</span>
-                  </label>
-                  <label for="sixPlusBed" class="option option-6 py-1">
-                    <span>6+</span>
-                  </label>
-                </div>
-          
+              
               <!-- CHOSE ROOMS -->
               <div class="col-12">
                 <h6>Stanze</h6>
               </div>
-                <div class="wrapper col-12">
-                  <input type="radio" name="rooms" id="oneRoom" value="1" v-model="nRooms">
-                  <input type="radio" name="rooms" id="twoRoom" value="2" v-model="nRooms">
-                  <input type="radio" name="rooms" id="threeRoom" value="3"  v-model="nRooms">
-                  <input type="radio" name="rooms" id="fourRoom" value="4"  v-model="nRooms">
-                  <input type="radio" name="rooms" id="fiveRoom" value="5"  v-model="nRooms">
-                  <input type="radio" name="rooms" id="sixPlusRoom" value="6"  v-model="nRooms">
-
-                  <label for="oneRoom" class="option option-1 py-1 py-1">
-                    <span>1</span>
-                  </label>
-                  <label for="twoRoom" class="option option-2 py-1 py-1">
-                    <span>2</span>
-                  </label>
-                  <label for="threeRoom" class="option option-3 py-1 py-1">
-                    <span>3</span>
-                  </label>
-                  <label for="fourRoom" class="option option-4 py-1 py-1">
-                    <span>4</span>
-                  </label>
-                  <label for="fiveRoom" class="option option-5 py-1 py-1">
-                    <span>5</span>
-                  </label>
-                  <label for="sixPlusRoom" class="option option-6 py-1 py-1">
-                    <span>6+</span>
-                  </label>
+              <div class="wrapper col-12">
+                <input type="radio" name="rooms" id="oneRoom" value="1" v-model="nRooms">
+                <input type="radio" name="rooms" id="twoRoom" value="2" v-model="nRooms">
+                <input type="radio" name="rooms" id="threeRoom" value="3"  v-model="nRooms">
+                <input type="radio" name="rooms" id="fourRoom" value="4"  v-model="nRooms">
+                <input type="radio" name="rooms" id="fiveRoom" value="5"  v-model="nRooms">
+                <input type="radio" name="rooms" id="sixPlusRoom" value="6"  v-model="nRooms">
+                
+                <label for="oneRoom" class="option option-1 py-1 py-1">
+                  <span>1</span>
+                </label>
+                <label for="twoRoom" class="option option-2 py-1 py-1">
+                  <span>2</span>
+                </label>
+                <label for="threeRoom" class="option option-3 py-1 py-1">
+                  <span>3</span>
+                </label>
+                <label for="fourRoom" class="option option-4 py-1 py-1">
+                  <span>4</span>
+                </label>
+                <label for="fiveRoom" class="option option-5 py-1 py-1">
+                  <span>5</span>
+                </label>
+                <label for="sixPlusRoom" class="option option-6 py-1 py-1">
+                  <span>6+</span>
+                </label>
+              </div>
+              <!-- CHOSE BEDS -->
+              <div class="col-12">
+                <h6>Letti</h6>
+              </div>
+              <div class="wrapper col-12">
+                <input type="radio" name="beds" id="oneBed" value="1" v-model="nBeds">
+                <input type="radio" name="beds" id="twoBed" value="2" v-model="nBeds">
+                <input type="radio" name="beds" id="threeBed" value="3"  v-model="nBeds">
+                <input type="radio" name="beds" id="fourBed" value="4"  v-model="nBeds">
+                <input type="radio" name="beds" id="fiveBed" value="5"  v-model="nBeds">
+                <input type="radio" name="beds" id="sixPlusBed" value="6"  v-model="nBeds">
+                
+                <label for="oneBed" class="option option-1 py-1">
+                  <span>1</span>
+                </label>
+                <label for="twoBed" class="option option-2 py-1">
+                  <span>2</span>
+                </label>
+                <label for="threeBed" class="option option-3 py-1">
+                  <span>3</span>
+                </label>
+                <label for="fourBed" class="option option-4 py-1">
+                  <span>4</span>
+                </label>
+                <label for="fiveBed" class="option option-5 py-1">
+                  <span>5</span>
+                </label>
+                <label for="sixPlusBed" class="option option-6 py-1">
+                  <span>6+</span>
+                </label>
               </div>
             </div>
           </div>
@@ -131,7 +131,7 @@ export default {
 
               <div class="col-12">
                 <label for="customRange3" class="form-label">Aumenta il raggio di ricerca</label>
-                <input type="range" class="form-range range-md px-sm-3 px-lg-5 p" min="20" max="1000" step="20" id="customRange3" v-model="radius">
+                <input type="range" class="form-range range-md px-sm-3 px-lg-5 p" min="1" max="30" step="1" id="customRange3" v-model="radius">
               </div>
               <div class="row ms-sm-0 ms-md-5">
                 <div class="km-input border border-1 col-6 col-md-6 col-lg-4">
