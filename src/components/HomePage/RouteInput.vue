@@ -4,7 +4,7 @@ export default {
   name: 'RouteInput',
   data() {
     return {
-      inputAddress: 'ciao',
+      inputAddress: '',
     }
   },
   methods:{
@@ -37,13 +37,17 @@ export default {
       var inputAddress = document.getElementsByClassName('tt-search-box-input')[0]
       inputAddress.classList.add('form-control')
       inputAddress.setAttribute('name', 'inputAddress')
-      inputAddress.setAttribute('v-model', 'inputAddress')
       inputAddress.setAttribute('autocomplete', 'off')
       inputAddress.setAttribute('required', true)
       const inputBox = document.getElementsByClassName('tt-search-box-input-container')[0]
-      inputBox.classList.add('position-relative', 'd-inline')
+      inputBox.classList.add('position-relative')
       const resultBox = document.getElementsByClassName('tt-search-box-result-list-container')[0]
       resultBox.classList.add('position-absolute', 'bg-white')
+    },
+    getValue(){
+      var inputAddress = document.getElementsByClassName('tt-search-box-input')[0]
+      this.inputAddress = inputAddress.value
+      console.log(inputAddress.value)
     }
   },
   mounted(){
@@ -55,10 +59,7 @@ export default {
 <template>
   <article id="address-input">
     <label for="address" id="address-label">Scegli una destinazione per le tue vacanze!</label>
-    {{ inputAddress }}
-
-    <!-- <input type="text" placeholder="es.(Piazza S. Marco, Venezia)" v-model="inputAddress"> -->
-    <router-link id="address-button" @click=" $emit('address', inputAddress)" :to="{ name: 'search' }" class="btn btn-primary" :class="inputAddress.length < 2 ? 'pe-none' : ''" > Invia </router-link>
+    <router-link id="address-button" @click="getValue(), $emit('address', inputAddress)" :to="{ name: 'search' }" class="btn btn-primary" > Invia </router-link>
   </article>
 </template>
 
@@ -113,6 +114,9 @@ export default {
 
   .tt-search-box-close-icon{
     display: none;
+  }
+  .tt-search-box-result-list-container{
+    z-index: 1;
   }
 }
 </style>
