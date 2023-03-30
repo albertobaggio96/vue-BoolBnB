@@ -36,6 +36,8 @@ export default {
       // let addressFilterLabel = document.getElementsByClassName('tt-searchbox-filter-label')[0]
       addressLabel.after(searchBoxHTML)
       var inputAddress = document.getElementsByClassName('tt-search-box-input')[0]
+      const addressBox = document.getElementsByClassName('tt-search-box')[0]
+      addressBox.classList.add('col-12', 'col-md-6')
       inputAddress.classList.add('form-control')
       inputAddress.setAttribute('name', 'inputAddress')
       inputAddress.setAttribute('autocomplete', 'off')
@@ -59,15 +61,17 @@ export default {
 
 <template>
   <div class="container">
-    <div class="row d-flex justify-content-center">
-      <div class="col-12 col-lg-8 col-md-9">
-        <article id="address-input" class="d-flex align-items-center">
-          <label for="address" id="address-label" class="d-none d-lg-inline">Scegli una destinazione per le tue vacanze!</label>
-          <router-link id="address-button" @click="getValue(), $emit('address', inputAddress)" :to="{ name: 'search' }"
-            class="btn btn-primary btn-bg "> Invia </router-link>
-        </article>
+    <div class="row  justify-content-center">
+      <div class="col-12 col-lg-6 col-md-9 text-center">
+          <h1>Scegli una destinazione per le tue vacanze!</h1>
+          <font-awesome-icon icon="fa-solid fa-arrow-down" />
       </div>
     </div>
+          <article id="address-input" class="row align-items-center">
+            <label for="address" id="address-label" class="d-none d-lg-inline"></label>
+            <router-link id="address-button" @click="getValue(), $emit('address', inputAddress)" :to="{ name: 'search' }"
+            class="btn  btn-bg col-12 col-md-6 m-1"> Invia </router-link>
+          </article>
   </div>
 </template>
 
