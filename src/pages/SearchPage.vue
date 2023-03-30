@@ -97,12 +97,12 @@ export default {
         <section id="filtered-property">
             <div class="container">
                 <div class="row">
-                    <LoaderLogo v-if="properties === null" />
+                    <LoaderLogo v-if="properties === null"/>
                     <div v-else-if="properties.length === 0 ">
                         NON CI SONO PROPRIETA'
                     </div>
-                    <div v-else class="col-sm-12 col-md-6 col-lg-4 col-xl-3"  v-for="property in properties">
-                      <CardProperty :property="property" @showSlug="getShowParams"/>
+                    <div v-else class="col-sm-12 col-md-6 col-lg-4 col-xl-3"  v-for="(property, index) in properties">
+                      <CardProperty :property="property" @showSlug="getShowParams" :key="index"/>
                     </div>
                 </div>
             </div>
