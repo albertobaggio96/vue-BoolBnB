@@ -56,7 +56,7 @@ export default {
         return false
       }
     },
-    popup(){
+    checkErrors(){
       this.check = true
     },
   }
@@ -97,7 +97,7 @@ export default {
               </div>
               <hr class="my-5 text-center">
               <div class="text-center">
-                <a class="btn button-primary" @click="(isValidate()) ? $emit('send', mailGuest, nameGuest, subjectGuest, messageGuest) : popup()">Invia Messaggio</a>
+                <a class="btn button-primary" @click="(isValidate()) ? $emit('send', mailGuest, nameGuest, subjectGuest, messageGuest) : checkErrors()">Invia Messaggio</a>
                 {{ isValidate() }}
               </div>
           </form>
