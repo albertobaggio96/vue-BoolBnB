@@ -70,7 +70,7 @@ export default {
           <article id="address-input" class="row align-items-center">
             <label for="address" id="address-label" class="d-none d-lg-inline"></label>
             <router-link id="address-button" @click="getValue(), $emit('address', inputAddress)" :to="{ name: 'search' }"
-            class="btn  btn-bg col-12 col-md-6 m-1"> Invia </router-link>
+            class="btn  btn-bg col-12 col-md-6"> Invia </router-link>
           </article>
   </div>
 </template>
@@ -79,13 +79,13 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap');
 
 #address-input {
-  margin: 6rem;
+  //margin: 6rem;
   background-color: rgba(0, 0, 0, 0.1);
   padding: 1rem;
   border-radius: 2rem;
 
   label {
-    margin: .5rem;
+    //margin: .5rem;
   }
 
   input {
@@ -133,6 +133,6 @@ export default {
 
 
 #address-button{
-  margin-left: 1rem;
+  //margin-left: 1rem;
 }
 </style>
