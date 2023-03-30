@@ -43,12 +43,14 @@ export default {
         <div>
           <h2 class="fs-5 text-center">{{ getMaxLength(property.title) }}</h2>
         </div>
-        <ul class="row text-center p-0">
-          <li class="col list-group-item" v-for="service in property.services"><font-awesome-icon :icon="service.icon " /></li>
-        </ul>
-        <div class="d-flex justify-content-center">
-          <div class="pe-2"><font-awesome-icon icon="fa-solid fa-bed" /> {{ property.n_beds }}</div>
-          <div class="ps-2"><font-awesome-icon icon="fa-solid fa-person-shelter" /> {{ property.n_rooms }}</div>
+        <div class="popup">
+          <ul class="row text-center p-0">
+            <li class="col list-group-item" v-for="service in property.services"><font-awesome-icon class="icon-color" :icon="service.icon " /></li>
+          </ul>
+          <div class="d-flex justify-content-center">
+            <div class="pe-2 icon-bg-color text-white px-2 me-1"><font-awesome-icon class="text-white" icon="fa-solid fa-bed" /> {{ property.n_beds }}</div>
+            <div class="ps-2 icon-bg-color text-white px-2"><font-awesome-icon class="text-white" icon="fa-solid fa-person-shelter" /> {{ property.n_rooms }}</div>
+          </div>
         </div>
       </article>
     </div>
@@ -56,7 +58,28 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use '../../style/partials/variables' as*;
 
+.icon-color{
+  color: $light-purple;
+}
+
+.icon-bg-color{
+    background-color: $secondary-purple;
+    border-radius: 10px;
+  }
+
+
+  .popup{
+    //display: none;
+    opacity: 0;
+  }
+  .card:hover .popup{
+    //display: block;
+    opacity: 100;
+    transition: .8s;
+    
+  }
 .carousel-item{
   height: 280px;
   .custom-img{
