@@ -3,7 +3,8 @@
 export default {
   name: 'ServiceSelection',
   props:[
-    'services'
+    'services',
+    'selectedIcon'
   ],
   data() {
     return {
@@ -14,15 +15,21 @@ export default {
     }
   },
   methods:{
+  
   }
 }
 </script>
 
 <template>
-    <!-- Button trigger modal -->
+
+  <!-- Button trigger modal -->
   <div class="container">
-    <div class="row py-3">
-      <div class="col-12 text-end">
+    <div class="row py-3 mb-4">
+      <div class="selected-filters col-12 col-md-9">
+        <span v-if="selectedIcon.length > 0" class="fs-4 me-3">Filtri attivi:</span>
+        <span v-if="selectedIcon.length > 0" v-for="filter in selectedIcon" class="me-3"><font-awesome-icon class="fs-4" :icon="filter" /> </span>
+      </div>
+      <div class="col-12 col-md-3 text-end mt-2 mt-md-0">
         <button type="button" class="btn button-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
           <font-awesome-icon icon="fa-solid fa-sliders" /> Filtri
         </button>
@@ -116,7 +123,7 @@ export default {
             <div class="row">
               <h4>Servizi:</h4>
               <div class="col-sm-12 col-lg-6 my-2" v-for="service in services">
-                <input type="checkbox" :id="service.slug" :name="service.slug" :value="service.id" v-model="checkedServices"  @click="checkedServices" class="form-check-input text-black text-decoration-none"/>
+                <input type="checkbox" :id="service.slug" :name="service.slug" :value="service" v-model="checkedServices"  @click="checkedServices" class="form-check-input text-black text-decoration-none"/>
                 <label :for="service.slug" class="mx-2"> {{ service.title }} </label>
               </div>
             </div>

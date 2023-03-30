@@ -6,6 +6,10 @@ import CardProperty from '../components/shered-components/CardProperty.vue';
 import FiltersApp from '../components/SearchPage/FiltersApp.vue';
 import LoaderLogo from '../components/SearchPage/LoaderLogo.vue';
 export default {
+    props:[
+        'homeInput'
+
+    ],
     name: 'searchPage',
     components:{
         CardProperty,
@@ -51,9 +55,11 @@ export default {
         },
         getServicesFilter(services, beds, rooms, radius){
             if(services.length){
-                this.store.storeParams.services = services;
+                this.store.storeParams.services = services.map(service => service.id);
+                this.store.selectedIcon = services.map(service => service.icon)
             } else{
                 delete this.store.storeParams.services 
+                this.store.selectedIcon = []
             }
 
             if(beds){
@@ -89,9 +95,18 @@ export default {
 
 <template >
     <main>
+        <div class="user-search container">
+            <div class="row">
+                <div class="col-12 mb-1 mt-5">
+                    <h1 class="fs-4">Stai cercando appartamenti a : {{ this.store.storeParams.address.charAt(0).toUpperCase() +  this.store.storeParams.address.slice(1)}}</h1>
+                </div>
+            </div>
+        </div>
+
+
         <!-- sezione della selezione dei servizi -->
         <section id="services-selection">
-            <FiltersApp :services="services" @servicesFilter="getServicesFilter"/>
+            <FiltersApp :services="services" @servicesFilter="getServicesFilter" :selectedIcon="store.selectedIcon"/>
         </section>
         <!-- risultato delle proprietà selezionate -->
         <section id="filtered-property">

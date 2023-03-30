@@ -1,9 +1,10 @@
 <script>
-
+import {store} from '../../store'
 export default {
   name: 'RouteInput',
   data() {
     return {
+      store,
       inputAddress: '',
     }
   },

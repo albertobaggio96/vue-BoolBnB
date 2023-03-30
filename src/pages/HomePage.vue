@@ -44,7 +44,7 @@ export default {
         </div>
         
         <main class="d-flex justify-content-center">
-            <RouteInput @address="searchApparament" />
+            <RouteInput @address="searchApparament"/>
         </main>
         
     </div>
