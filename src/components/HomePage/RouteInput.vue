@@ -7,28 +7,28 @@ export default {
       inputAddress: '',
     }
   },
-  methods:{
-    addressAutocomlete(){
+  methods: {
+    addressAutocomlete() {
       let key_tomtom = '5dOnjZSt5ReBy5v5KLIX6NEApWJqJ6bZ'
 
       var options = {
-          searchOptions: {
+        searchOptions: {
           key: key_tomtom,
           language: "it-IT",
           limit: 5,
-          countrySet : 'IT',
+          countrySet: 'IT',
           extendedPostalCodesFor: 'PAD,Addr'
-          },
-          autocompleteOptions: {
+        },
+        autocompleteOptions: {
           key: key_tomtom,
           language: "it-IT",
-          countrySet : 'IT'
-          },
-          placeholder : 'es. (Via Roma 30, 30020 Fossalta di Piave)',
-          minNumberOfCharacters : 4,
-          showSearchButton : false,
-          cssStyleCheck : false
-        
+          countrySet: 'IT'
+        },
+        placeholder: 'es. (Via Roma 30, 30020 Fossalta di Piave)',
+        minNumberOfCharacters: 4,
+        showSearchButton: false,
+        cssStyleCheck: false
+
       }
       var ttSearchBox = new tt.plugins.SearchBox(tt.services, options)
       var searchBoxHTML = ttSearchBox.getSearchBoxHTML()
@@ -45,44 +45,48 @@ export default {
       const resultBox = document.getElementsByClassName('tt-search-box-result-list-container')[0]
       resultBox.classList.add('position-absolute', 'bg-white')
     },
-    getValue(){
+    getValue() {
       var inputAddress = document.getElementsByClassName('tt-search-box-input')[0]
       this.inputAddress = inputAddress.value
       console.log(inputAddress.value)
     }
   },
-  mounted(){
+  mounted() {
     this.addressAutocomlete()
   }
 }
 </script>
 
 <template>
-  <article id="address-input" class="d-flex align-items-center">
-    <label for="address" id="address-label">Scegli una destinazione per le tue vacanze!</label>
-    <router-link id="address-button" @click="getValue(), $emit('address', inputAddress)" :to="{ name: 'search' }" class="btn btn-primary" > Invia </router-link>
-  </article>
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-12 col-lg-8 col-md-9">
+        <article id="address-input" class="d-flex align-items-center">
+          <label for="address" id="address-label" class="d-none d-lg-inline">Scegli una destinazione per le tue vacanze!</label>
+          <router-link id="address-button" @click="getValue(), $emit('address', inputAddress)" :to="{ name: 'search' }"
+            class="btn btn-primary btn-bg "> Invia </router-link>
+        </article>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap');
 
 #address-input {
-  margin: 1rem;
-  background-color:  rgba(0, 0, 0, 0.1);
+  margin: 6rem;
+  background-color: rgba(0, 0, 0, 0.1);
   padding: 1rem;
   border-radius: 2rem;
 
   label {
-    margin: 1rem;
+    margin: .5rem;
   }
 
   input {
-    margin: 1rem;
     border-radius: 1rem;
     padding: .5rem;
-    border: 1px solid #ff6550;
-    width: 350px;
   }
 
 
@@ -92,15 +96,16 @@ export default {
     font-weight: 0;
     font-size: 14px;
     color: #fff;
-    background-color: #0066CC;
+    background-color: #6962e9;
     padding: 10px 30px;
-    border: 2px solid #0066cc;
+    border: 2px solid #6962e9;
     box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
     border-radius: 50px;
     transition: 1000ms;
     transform: translateY(0);
     align-items: center;
     cursor: pointer;
+
   }
 
   .btn:hover {
@@ -112,12 +117,18 @@ export default {
     color: #0066cc;
     border: solid 2px #0066cc;
   }
-  
-  .tt-search-box-close-icon{
+
+  .tt-search-box-close-icon {
     display: none;
   }
-  .tt-search-box-result-list-container{
+
+  .tt-search-box-result-list-container {
     z-index: 1;
   }
+}
+
+
+#address-button{
+  margin-left: 1rem;
 }
 </style>
