@@ -29,10 +29,10 @@ export default {
       <div class="selected-filters col-12 col-md-9">
         <span v-if="selectedIcon.length > 0 || selectedBeds > 0 || selectedRooms > 0" class="fs-4 me-3">Filtri attivi:</span>
         <span v-if="selectedIcon.length > 0" v-for="filter in selectedIcon" class="me-3"><font-awesome-icon class="fs-4 icon-color" :icon="filter" /></span>
-        <font-awesome-icon class="fs-4 icon-color me-3" icon="fa-solid fa-grip-lines-vertical" />
+        <font-awesome-icon v-if="selectedBeds > 0" class="fs-4 icon-color me-3" icon="fa-solid fa-grip-lines-vertical" />
         <span v-if="selectedBeds > 0" class="me-2 fs-4 icon-bg-color px-1 text-white"> {{ selectedBeds == 6 ? '6+' : selectedBeds}} <font-awesome-icon class="fs-4 text-white" icon="fa-solid fa-bed" /></span>
-        <font-awesome-icon class="fs-4 icon-color me-3" icon="fa-solid fa-grip-lines-vertical" />
-        <span v-if="selectedRooms > 0" class="me-3 fs-4 icon-bg-color px-1 text-white"> {{ selectedRooms == 6 ? '6+' : selectedBeds }} <font-awesome-icon class="fs-4 text-white" icon="fa-solid fa-person-shelter" /></span>
+        <font-awesome-icon v-if="selectedRooms > 0" class="fs-4 icon-color me-3" icon="fa-solid fa-grip-lines-vertical" />
+        <span v-if="selectedRooms > 0" class="me-3 fs-4 icon-bg-color px-1 text-white"> {{ selectedRooms == 6 ? '6+' : selectedRooms }} <font-awesome-icon class="fs-4 text-white" icon="fa-solid fa-person-shelter" /></span>
       </div>
       <div class="col-12 col-md-3 text-end mt-2 mt-md-0">
         <button type="button" class="btn button-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
