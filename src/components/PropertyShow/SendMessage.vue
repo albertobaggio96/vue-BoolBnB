@@ -33,6 +33,16 @@ export default {
           return "is-invalid"
         }
           return "is-valid"
+    },
+    validateMail(email){
+      const validRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+      if (email.match(validRegex)) {
+        return "is-valid";
+      } else if(email.length == 0) {
+        return "";
+      }else{
+        return "is-invalid"
+      }
     }
   }
 }
@@ -47,11 +57,12 @@ export default {
             <h5 class="card-title">Invia un messaggio all'Host</h5>
           </div>
           <hr>
-          <form class="text-center">
-              <div class="mb-3">
+          <form class="">
+              <div class="mb-3 text-center">
                   <label for="mail-guest" class="form-label">Inserisci la tua Email</label>
-                  <input class="form-control" type="email" id="mail-guest" name="mail-guest" :class="formValidation(mailGuest)" v-model="mailGuest" required minlength="2" maxlength="100">
-              </div>
+                  <input class="form-control" type="email" id="mail-guest" name="mail-guest" :class="validateMail(mailGuest)" v-model="mailGuest" required minlength="2" maxlength="100">
+                </div>
+                <span v-if="validateMail(mailGuest) === 'is-invalid' " class="text-danger text-start">inserisci una mail valida</span>
               <div class="mb-3">
                   <label for="name-guest" class="form-label">Nome</label>
                   <input class="form-control" type="text" id="name-guest" name="name-guest" :class="formValidation(nameGuest)" v-model="nameGuest" required minlength="2" maxlength="100">
