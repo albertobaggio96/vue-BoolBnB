@@ -70,14 +70,14 @@ export default {
           <article id="address-input" class="row align-items-center">
             <label for="address" id="address-label" class="d-none d-lg-inline"></label>
             <router-link id="address-button" @click="getValue(), $emit('address', inputAddress)" :to="{ name: 'search' }"
-            class="btn  btn-bg col-12 col-md-6"> Invia </router-link>
+            class="btn button-primary col-12 col-md-6"> Invia </router-link>
           </article>
   </div>
 </template>
 
 <style lang="scss">
+@use '../../style/partials/variables' as*;
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap');
-
 #address-input {
   //margin: 6rem;
   background-color: rgba(0, 0, 0, 0.1);
@@ -93,34 +93,36 @@ export default {
     padding: .5rem;
   }
 
+.button-primary{
+  @include button-primary;
+}
+  // .btn {
 
-  .btn {
+  //   font-family: Roboto, sans-serif;
+  //   font-weight: 0;
+  //   font-size: 14px;
+  //   color: #fff;
+  //   background-color: #6962e9;
+  //   padding: 10px 30px;
+  //   border: 2px solid #6962e9;
+  //   box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+  //   border-radius: 50px;
+  //   transition: 1000ms;
+  //   transform: translateY(0);
+  //   align-items: center;
+  //   cursor: pointer;
 
-    font-family: Roboto, sans-serif;
-    font-weight: 0;
-    font-size: 14px;
-    color: #fff;
-    background-color: #6962e9;
-    padding: 10px 30px;
-    border: 2px solid #6962e9;
-    box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
-    border-radius: 50px;
-    transition: 1000ms;
-    transform: translateY(0);
-    align-items: center;
-    cursor: pointer;
+  // }
 
-  }
+  // .btn:hover {
 
-  .btn:hover {
-
-    transition: 1000ms;
-    padding: 10px 50px;
-    transform: translateY(-0px);
-    background-color: #fff;
-    color: #0066cc;
-    border: solid 2px #0066cc;
-  }
+  //   transition: 1000ms;
+  //   padding: 10px 50px;
+  //   transform: translateY(-0px);
+  //   background-color: #fff;
+  //   color: #0066cc;
+  //   border: solid 2px #0066cc;
+  // }
 
   .tt-search-box-close-icon {
     display: none;
