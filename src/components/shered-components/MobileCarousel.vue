@@ -23,15 +23,18 @@ export default {
           
         </div>
         <div class="carousel-inner">  
-          <div class="carousel-item" :class="(index == 0) ? 'active' : ''" v-for="image, index in property.images">
-            <img :src="(image.path) ? 'http://127.0.0.1:8000/storage/'+image.path : property.cover_img" alt="" class="custom-img d-block w-100">
-          </div>
+          <figure class="cover-img" v-if="property.images.length === 0 ">
+            <img :src="'http://127.0.0.1:8000/storage/'+property.cover_img" :alt="property.slug" class="custom-img d-block w-100">
+          </figure>
+          <figure v-else class="carousel-item" :class="(index == 0) ? 'active' : ''" v-for="image, index in property.images">
+            <img :src="'http://127.0.0.1:8000/storage/'+image.path" :alt="property.slug" class="custom-img d-block w-100">
+          </figure>
         </div>
-        <button class="carousel-control-prev" type="button" :data-bs-target="'#carouselExampleIndicators'+ property.id" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" :data-bs-target="'#carouselExampleIndicators'+ property.id" data-bs-slide="prev" :class="property.images.length === 0 ? 'd-none' : ''">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" :data-bs-target="'#carouselExampleIndicators' + property.id" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" :data-bs-target="'#carouselExampleIndicators' + property.id" data-bs-slide="next" :class="property.images.length === 0 ? 'd-none' : ''">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
@@ -39,6 +42,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+  .cover-img,
   .carousel-item{
   height: 280px;
   .custom-img{
@@ -48,6 +52,7 @@ export default {
     border-radius: 20px;
   }
 }
+
 
 
 .carousel-control-next-icon,

@@ -15,18 +15,18 @@ export default {
 <template>
   <article class="col-12">
     <div class="row">
-      <div class="col-6 p-1 d-none d-lg-inline-flex">
+      <div class="p-1 d-none d-lg-inline-flex" :class="property.images.length === 0 ? 'col-12 justify-content-center' : 'col-6'">
         <img :src="'http://127.0.0.1:8000/storage/'+property.cover_img" alt="" class="img-fluid h-100 top-img">
       </div>
           
-      <div class="col-6 h-100 d-flex flex-wrap p-1 d-none d-lg-inline-flex position-relative">
+      <div v-if="property.images.length != 0" class="col-6 h-100 d-flex flex-wrap p-1 d-none d-lg-inline-flex position-relative">
         <div class="wrapper-img" v-for="image, index in property.images.slice(1, 5)" :class="'wrapper'+index">
           <img :src="'http://127.0.0.1:8000/storage/'+image.path" class="img-fluid h-100" :class="'custom-img'+index" alt="">
         </div>  
         <button type="button" class="btn button-outline" data-bs-toggle="modal" data-bs-target="#exampleModal"><font-awesome-icon icon="fa-solid fa-maximize" /> Mostra tutte le foto</button>
       </div>
       
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div v-if="property.images.length != 0" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen">
             <div class="modal-content">
             <div class="modal-header">
