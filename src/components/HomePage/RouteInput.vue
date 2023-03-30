@@ -33,6 +33,7 @@ export default {
       var ttSearchBox = new tt.plugins.SearchBox(tt.services, options)
       var searchBoxHTML = ttSearchBox.getSearchBoxHTML()
       var addressLabel = document.getElementById('address-label')
+      // let addressFilterLabel = document.getElementsByClassName('tt-searchbox-filter-label')[0]
       addressLabel.after(searchBoxHTML)
       var inputAddress = document.getElementsByClassName('tt-search-box-input')[0]
       inputAddress.classList.add('form-control')
@@ -57,7 +58,7 @@ export default {
 </script>
 
 <template>
-  <article id="address-input">
+  <article id="address-input" class="d-flex align-items-center">
     <label for="address" id="address-label">Scegli una destinazione per le tue vacanze!</label>
     <router-link id="address-button" @click="getValue(), $emit('address', inputAddress)" :to="{ name: 'search' }" class="btn btn-primary" > Invia </router-link>
   </article>
@@ -111,7 +112,7 @@ export default {
     color: #0066cc;
     border: solid 2px #0066cc;
   }
-
+  
   .tt-search-box-close-icon{
     display: none;
   }
