@@ -94,32 +94,33 @@ export default {
     <div class="col-12">
       <div class="card w-100">
         <div class="card-body">
-          <div class="title mt-3 mb-5 text-center">
+          <div class="title mt-3 mb-3 text-center">
             <h3 class="card-title">Invia un messaggio all'Host</h3>
+            <div>I campi contrassegnati da * sono obbligatori</div>
           </div>
           <hr>
-          <form class=""> 
-              <div class="mb-3 text-center">
-                  <label for="nameGuest" class="form-label my-3">Inserisci la tua mail</label>
+          <form class="mt-0"> 
+              <div class="text-center position-relative">
+                  <label for="nameGuest" class="form-label mb-3 ">Inserisci la tua mail*</label>
                   <input class="form-control" type="email" id="mail-guest" name="mail-guest" :class="validateMail(mailGuest, checkEmail), checkEmail ? 'is-invalid' : ''" v-model="mailGuest" required minlength="2" maxlength="100" placeholder="">
+                  <span v-if="validateMail(mailGuest) === 'is-invalid' || checkEmail " class="text-error text-start position-absolute start-0">*Inserisci una mail valida</span>
                 </div>
-                <span v-if="validateMail(mailGuest) === 'is-invalid' || checkEmail " class="text-error text-start">*Inserisci una mail valida</span>
-              <div class="mb-3 text-center">
-                  <label for="name-guest" class="form-label my-3">Nome</label>
+              <div class="mb-3 text-center position-relative">
+                  <label for="name-guest" class="form-label my-3">Nome*</label>
                   <input class="form-control" type="text" id="name-guest" name="name-guest" :class="nameValidation(nameGuest, 2), checkName ? 'is-invalid' : ''" v-model="nameGuest" required minlength="2" maxlength="100">
+                  <span v-if="nameValidation(nameGuest, 4) === 'is-invalid' || checkName " class="text-error text-start position-absolute start-0">*Inserisci un nome con almeno 2 caratteri</span>
               </div>
-                <span v-if="nameValidation(nameGuest, 4) === 'is-invalid' || checkName " class="text-error text-start">*Inserisci un nome con almeno 2 caratteri</span>
-              <div class="mb-3 text-center">
-                  <label for="subject-guest" class="form-label my-3">Oggetto del messaggio</label>
+              <div class="mb-3 text-center position-relative">
+                  <label for="subject-guest" class="form-label my-3">Oggetto del messaggio*</label>
                   <input class="form-control" type="text" id="subject-guest" name="subject-guest" :class="subjectValidation(subjectGuest, 4, checkSubject), checkSubject ? 'is-invalid' : ''" v-model="subjectGuest"  required minlength="2" maxlength="100">
+                  <span v-if="subjectValidation(subjectGuest, 4) === 'is-invalid' || checkSubject " class="text-error text-start position-absolute start-0">*Inserisci un oggetto esplicativo</span>
               </div>
-                <span v-if="subjectValidation(subjectGuest, 4) === 'is-invalid' || checkSubject " class="text-error text-start">*Inserisci un oggetto esplicativo</span>
-              <div class="mb-3 text-center">
-                  <label class="form-label my-3" for="message-guest ">Scrivi il tuo messaggio</label>
+              <div class="mb-3 text-center position-relative">
+                  <label class="form-label my-3" for="message-guest ">Scrivi il tuo messaggio*</label>
                   <textarea name="message-guest" id="message-guest"  v-model="messageGuest" class="form-control" :class="messageValidation(messageGuest, 20), checkMessage ? 'is-invalid' : ''" required minlength="20" maxlength="6000"></textarea>
+                  <span v-if="messageValidation(messageGuest, 20) === 'is-invalid' || checkMessage " class="text-error text-start position-absolute start-0">*Inserisci una descrizione di almeno 20 caratteri</span>
               </div>
-                <span v-if="messageValidation(messageGuest, 20) === 'is-invalid' || checkMessage " class="text-error text-start">*Inserisci una descrizione di almeno 20 caratteri</span>
-              <hr class="my-5 text-center">
+              <hr class="my-5 text-center position-relative">
               <div class="text-center">
                 <a class="btn button-primary" @click="(isValidate()) ? $emit('send', mailGuest, nameGuest, subjectGuest, messageGuest) : checkErrors()">Invia Messaggio</a>
               </div>
