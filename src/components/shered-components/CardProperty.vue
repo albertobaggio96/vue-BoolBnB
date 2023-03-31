@@ -32,9 +32,12 @@ export default {
 
 <template>
   <router-link @click="$emit('showSlug', property.slug)" :to="{ name: 'show' }" class="text-black text-decoration-none">
-    <div class="card border-0 mb-4">
+    <div class="card border-0 mb-4 position-relative">
       <MobileCarouselVue :property = "property"/>
       <article>
+        <div class="sponsor-logo" v-if="property.active_sponsorship">
+          <font-awesome-icon icon="fa-solid fa-rocket" class="position-absolute top-50 start-50 translate-middle"/>
+        </div>
         <div class="d-flex align-items-center justify-content-between p-1">
           <h3 class="fs-6 fw-bold mb-0 h-100">{{ (property.address.split('-')[1]) ? property.address.split('-')[1] : property.address.split(' ').slice(-1)[0] }}</h3>
           <h3 class="fs-6 text-muted mb-0 h-100"> {{ property.distance }} km</h3>
@@ -60,6 +63,13 @@ export default {
 <style lang="scss" scoped>
 @use '../../style/partials/variables' as*;
 
+
+.card{
+  transition: all .8s;
+  &:hover{
+    transform: scale(1.08);
+  }
+}
 .icon-color{
   color: $light-purple;
 }
@@ -68,17 +78,12 @@ export default {
     background-color: $secondary-purple;
     border-radius: 10px;
   }
-
-
   .popup{
-    //display: none;
     opacity: 0;
   }
   .card:hover .popup{
-    //display: block;
     opacity: 100;
     transition: .8s;
-    
   }
 .carousel-item{
   height: 280px;
@@ -106,6 +111,17 @@ export default {
 
 .price-box{
   line-height: inherit;
+}
+
+.sponsor-logo{
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  color: $primary-purple;
+  background-color: rgba(255, 250, 250, 0.678);
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
 }
 
 </style>
