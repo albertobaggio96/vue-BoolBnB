@@ -22,6 +22,7 @@ export default {
             properties: null,
             services: null,
             servicesFilter : null,
+            apiSuccess: 'in progress',
         }
     },
     methods:{
@@ -31,7 +32,12 @@ export default {
             })
             .then((response) => {
                 console.log(response)
-                this.properties = response.data.results
+                this.apiSuccess = response.data.success
+                if(this.apiSuccess){
+                    this.properties = response.data.results
+                } else {
+                    this.properties = response.data.errorMessage
+                }
              })
              .catch(function (error) {
                console.log(error, ok);
@@ -43,7 +49,7 @@ export default {
         getServicesApi(){
             axios.get(`${this.store.apiUri}/services`)
             .then((response) => {
-                console.log(response)
+                // console.log(response)
                 this.services = response.data.results
              })
              .catch(function (error) {
@@ -119,6 +125,9 @@ export default {
                     <LoaderLogo v-if="properties === null"/>
                     <div v-else-if="properties.length === 0 ">
                         NON CI SONO PROPRIETA'
+                    </div>
+                    <div v-else-if="!apiSuccess">
+                        {{ this.properties }}
                     </div>
                     <div v-else class="col-sm-12 col-md-6 col-lg-4 col-xl-3"  v-for="(property, index) in properties">
                       <CardProperty :property="property" @showSlug="getShowParams" :key="index"/>
