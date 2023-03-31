@@ -106,8 +106,8 @@ export default {
         }
     },
     created(){
-        this.getPropertyApi()
-        this.getServicesApi()
+        this.getPropertyApi(),
+        this.getServicesApi(),
         this.removePreviusPage()
     }
 }

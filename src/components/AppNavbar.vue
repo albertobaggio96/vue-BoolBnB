@@ -8,6 +8,21 @@ export default {
             store
         }
     },
+    methods:{
+        resetStore() {
+            this.store = {
+                storeParams :{
+                    address: ''
+                },
+                    selectedIcon:  [],
+                    selectedBeds: 0,
+                    selectedRooms: 0,
+                    getBack : ''
+                }
+
+            return this.store
+        },
+    }
 }
 </script>
 <template>
@@ -22,16 +37,15 @@ export default {
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <router-link :to="{ name: 'home' }" class="nav-link fs-5 fw-bold  text-dark"> <i class="fa-solid fa-house"></i> Home </router-link>
+                        <router-link  @click="resetStore()" :to="{ name: 'home' }" class="nav-link fs-5 fw-bold  text-dark"> <i class="fa-solid fa-house"></i> Home </router-link>
                     </li>
                     <li v-if="store.getBack == 'search'" class="nav-item">
-                        <router-link :to="{ name: store.getBack }" class="nav-link fs-5 fw-bold  text-dark"> <i class="fa-solid fa-house"></i> Come Back </router-link>
+                        <router-link @click="store.getBack = ''" :to="{ name: store.getBack }" class="nav-link fs-5 fw-bold  text-dark"> <i class="fa-solid fa-house"></i> Come Back </router-link>
                     </li>
+
                 </ul>
                 <span class="navbar-text">
                     <a class="login-a fw-bold m-2 " href="http://127.0.0.1:8000/admin">Login</a>
-                    <a class="login-a fw-bold m-2 " href="http://127.0.0.1:8000/register">Iscriviti</a>
-
                 </span>
 
             </div>

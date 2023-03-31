@@ -26,7 +26,9 @@ export default {
             this.store.storeParams = {
                 address: ''
             }
-            this.store.getBack = ''
+            this.store.selectedIcon = [],
+            this.store.selectedBeds = 0
+            this.store.selectedRooms = 0
         },
         sponsoredApi(){
             axios.get(`${this.store.apiUri}/home`)

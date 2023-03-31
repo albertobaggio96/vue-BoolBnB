@@ -31,12 +31,12 @@ export default {
         cssStyleCheck: false
 
       }
-      var ttSearchBox = new tt.plugins.SearchBox(tt.services, options)
-      var searchBoxHTML = ttSearchBox.getSearchBoxHTML()
-      var addressLabel = document.getElementById('address-label')
+      let ttSearchBox = new tt.plugins.SearchBox(tt.services, options)
+      let searchBoxHTML = ttSearchBox.getSearchBoxHTML()
+      let addressLabel = document.getElementById('address-label')
       // let addressFilterLabel = document.getElementsByClassName('tt-searchbox-filter-label')[0]
       addressLabel.after(searchBoxHTML)
-      var inputAddress = document.getElementsByClassName('tt-search-box-input')[0]
+      let inputAddress = document.getElementsByClassName('tt-search-box-input')[0]
       const addressBox = document.getElementsByClassName('tt-search-box')[0]
       addressBox.classList.add('col-12', 'col-md-6')
       inputAddress.classList.add('form-control')
@@ -49,9 +49,9 @@ export default {
       resultBox.classList.add('position-absolute', 'bg-white')
     },
     getValue() {
-      var inputAddress = document.getElementsByClassName('tt-search-box-input')[0]
+      let inputAddress = document.getElementsByClassName('tt-search-box-input')[0]
       this.inputAddress = inputAddress.value
-      console.log(inputAddress.value)
+
     }
   },
   mounted() {
@@ -97,34 +97,6 @@ export default {
 .button-primary{
   @include button-primary;
 }
-  // .btn {
-
-  //   font-family: Roboto, sans-serif;
-  //   font-weight: 0;
-  //   font-size: 14px;
-  //   color: #fff;
-  //   background-color: #6962e9;
-  //   padding: 10px 30px;
-  //   border: 2px solid #6962e9;
-  //   box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
-  //   border-radius: 50px;
-  //   transition: 1000ms;
-  //   transform: translateY(0);
-  //   align-items: center;
-  //   cursor: pointer;
-
-  // }
-
-  // .btn:hover {
-
-  //   transition: 1000ms;
-  //   padding: 10px 50px;
-  //   transform: translateY(-0px);
-  //   background-color: #fff;
-  //   color: #0066cc;
-  //   border: solid 2px #0066cc;
-  // }
-
   .tt-search-box-close-icon {
     display: none;
   }
@@ -132,10 +104,5 @@ export default {
   .tt-search-box-result-list-container {
     z-index: 1;
   }
-}
-
-
-#address-button{
-  //margin-left: 1rem;
 }
 </style>
