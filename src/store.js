@@ -8,4 +8,5 @@ export const store = reactive({
     address : '',
   },
   show : '',
+  getBack : []
 })

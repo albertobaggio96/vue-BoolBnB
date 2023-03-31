@@ -1,6 +1,13 @@
 <script>
+import {store} from '../store.js'
+
 export default {
     name: 'navbar',
+    data() {
+        return {
+            store
+        }
+    },
 }
 </script>
 <template>
@@ -16,6 +23,9 @@ export default {
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <router-link :to="{ name: 'home' }" class="nav-link fs-5 fw-bold  text-dark"> <i class="fa-solid fa-house"></i> Home </router-link>
+                    </li>
+                    <li v-if="store.getBack == 'search'" class="nav-item">
+                        <router-link :to="{ name: store.getBack }" class="nav-link fs-5 fw-bold  text-dark"> <i class="fa-solid fa-house"></i> Come Back </router-link>
                     </li>
                 </ul>
                 <span class="navbar-text">

@@ -74,7 +74,7 @@ export default {
 <template>
     
     
-    <section class="container" id="show-img">  
+    <section class="container" id="show-img">
         <TitleShow :property="property" />
         <div class="row">
             <!-- CAROUSEL VISIBLE ONLY IN MOBILE AND TABLE -->

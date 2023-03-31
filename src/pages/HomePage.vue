@@ -26,6 +26,7 @@ export default {
             this.store.storeParams = {
                 address: ''
             }
+            this.store.getBack = ''
         },
         sponsoredApi(){
             axios.get(`${this.store.apiUri}/home`)
@@ -42,7 +43,7 @@ export default {
         },
         getShowParams(slug){
             this.store.show = slug;
-        }
+        },
     },
     created() {
         this.resetStore(),

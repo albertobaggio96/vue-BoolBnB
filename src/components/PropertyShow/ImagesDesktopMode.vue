@@ -16,12 +16,12 @@ export default {
   <article class="col-12">
     <div class="row">
       <div class="p-1 d-none d-lg-inline-flex" :class="property.images.length === 0 ? 'col-12 justify-content-center' : 'col-6'">
-        <img :src="'http://127.0.0.1:8000/storage/'+property.cover_img" alt="" class="img-fluid h-100 top-img">
+        <img :src="'http://127.0.0.1:8000/storage/'+property.cover_img" :alt="property.title" class="img-fluid h-100 top-img">
       </div>
           
       <div v-if="property.images.length != 0" class="col-6 h-100 d-flex flex-wrap p-1 d-none d-lg-inline-flex position-relative">
         <div class="wrapper-img" v-for="image, index in property.images.slice(1, 5)" :class="'wrapper'+index">
-          <img :src="'http://127.0.0.1:8000/storage/'+image.path" class="img-fluid h-100" :class="'custom-img'+index" alt="">
+          <img :src="'http://127.0.0.1:8000/storage/'+image.path" class="img-fluid h-100" :class="'custom-img'+index" :alt="property.title">
         </div>  
         <button type="button" class="btn button-outline" data-bs-toggle="modal" data-bs-target="#exampleModal"><font-awesome-icon icon="fa-solid fa-maximize" /> Mostra tutte le foto</button>
       </div>

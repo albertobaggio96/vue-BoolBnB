@@ -94,11 +94,19 @@ export default {
         },
         getShowParams(slug){
             this.store.show = slug;
+            this.getPreviusPage()
+        },
+        getPreviusPage(){
+            this.store.getBack ='search' 
+        },
+        removePreviusPage(){
+            this.store.getBack = ''
         }
     },
     created(){
         this.getPropertyApi()
         this.getServicesApi()
+        this.removePreviusPage()
     }
 }
 </script>
