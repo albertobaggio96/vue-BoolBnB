@@ -1,20 +1,28 @@
 <script>
 export default {
-    
+    props:[
+        'invalidAddress',
+        'apibho'
+    ],
+    data() {
+        return {
+            
+        }
+    },
+
 }
 </script>
 
 <template >
-   <div class="overlay"></div>
-
-<div class="text">
-	<div class="wrapper">
-		<div id="L" class="letter">L</div>
-		<div class="shadow">L</div>
-	</div>
-</div>
+    <div class="col-12 text-center align-content-center">
+        <img src="../../assets/Bool_icon.png" alt="">
+        <h2 v-if="!apibho">{{ invalidAddress }} &#128533;</h2>
+        <h2 v-if="invalidAddress.length === 0">Spiacenti ma non ci sono proprietá per la posizione inserita &#128533;</h2>
+    </div>
+    
 </template>
 
-<style lang="scoped">
-    
+<style lang="scss" scoped>
+
+
 </style>

@@ -5,6 +5,7 @@ import axios from 'axios';
 import CardProperty from '../components/shered-components/CardProperty.vue';
 import FiltersApp from '../components/SearchPage/FiltersApp.vue';
 import LoaderLogo from '../components/SearchPage/LoaderLogo.vue';
+import EmptySearch from '../components/SearchPage/EmptySearch.vue';
 export default {
     props:[
         'homeInput'
@@ -15,6 +16,7 @@ export default {
         CardProperty,
         FiltersApp,
         LoaderLogo,
+        EmptySearch,
     },
     data() {
         return {
@@ -122,13 +124,16 @@ export default {
         <section id="filtered-property">
             <div class="container">
                 <div class="row">
+                    <EmptySearch :invalidAddress="this.properties" :apibho="apiSuccess"/>
                     <LoaderLogo v-if="properties === null"/>
+                    
                     <div v-else-if="properties.length === 0 ">
-                        NON CI SONO PROPRIETA'
+                        
                     </div>
                     <div v-else-if="!apiSuccess">
-                        {{ this.properties }}
+                        
                     </div>
+
                     <div v-else class="col-sm-12 col-md-6 col-lg-4 col-xl-3"  v-for="(property, index) in properties">
                       <CardProperty :property="property" @showSlug="getShowParams" :key="index"/>
                     </div>
