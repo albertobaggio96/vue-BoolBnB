@@ -18,12 +18,12 @@
      
 
     .wrapper-popup{
+        opacity: 0%;
         z-index: 1;
         position: fixed;
         top: 50%;
-        right: 100%;
+        left: 50%;
         transform: translate(-50%, -50%);
-
         border: 1px solid $primary-purple;
         background-color: white;
         height: 200px;
@@ -60,32 +60,29 @@
             bottom: 0;
             left: 50%;
             transform: translate(-50%);
-            text-shadow: 3px 3px 2px rgba(144, 116, 255, 1),16px 5px 24px rgba(93, 34, 255, 1);
             color: $primary-purple;
             font-size: 1.8rem;
         }
     }
-    @keyframes  myAnimationLeft {
-        from {left: 0%;}
-        50% {left: 50%}
-        to {left: 150%;}
-
-    }
+    @keyframes  transition-popup {
+        from {opacity: 0%;}
+        to {opacity: 100%}
+        }
     /*Firefox */
-    @-moz-keyframes myAnimationLeft {
-        from {left: 0%;}
-        to {left: 50%; transform: translate(-50%);}
+    @-moz-keyframes transition-popup {
+        from {opacity: 0%;}
+        to {opacity: 100%;}
     }
     /* Safari and Chrome */
-    @-webkit-keyframes myAnimationLeft {
-        from {left: 0%;}
-        to {left: 50%;}
+    @-webkit-keyframes transition-popup {
+        from {opacity: 0%;}
+        to {opacity: 100%;}
     }
 
     .slide-left {
-        animation: myAnimationLeft 5.1s ease 0.1s 1 normal;
-        -moz-animation: myAnimationLeft 5.1s ease 0.1s 1 normal;
-        -webkit-animation: myAnimationLeft 5.1s ease 0.1s 1 normal;
-        -o-animation: myAnimationLeft 5.1s ease 0.1s 1 normal;
+        animation: transition-popup 2.1s ease 0.1s 1 normal;
+        -moz-animation: transition-popup 2.1s ease 0.1s 1 normal;
+        -webkit-animation: transition-popup 2.1s ease 0.1s 1 normal;
+        -o-animation: transition-popup 2.1s ease 0.1s 1 normal;
     }
 </style>

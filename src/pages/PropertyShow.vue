@@ -99,9 +99,6 @@ export default {
                     <SendMessage @send="getMessageForm" :sended="sended"/>
                     <PopupForm v-if="sended" />
                 </div>
-
-
-                
             </div>
         </div>
     </section>
