@@ -18,6 +18,7 @@ export default {
         <img v-if="!apibho || invalidAddress.length === 0" src="../../assets/Bool_icon.png" alt="logo">
         <h2 v-if="!apibho">{{ invalidAddress }} &#128533;</h2>
         <h2 v-if="invalidAddress.length === 0">Spiacenti ma non ci sono proprietá per la posizione inserita &#128533;</h2>
+        <router-link :to="{ name: 'home'}" class="btn btn-primary"> <i class="fa-solid fa-house"></i> Torna alla home </router-link>
     </div>
     
 </template>
