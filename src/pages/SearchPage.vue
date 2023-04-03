@@ -134,7 +134,7 @@ export default {
                 <div class="row">
                     <LoaderLogo v-if="properties === null"/>
                     
-                    <EmptySearch v-else-if="properties.length < 1 && !apiSuccess" :invalidAddress="this.properties" :apiSuccess="apiSuccess"/>
+                    <EmptySearch v-else-if="properties.length < 1 || !apiSuccess" :invalidAddress="this.properties" :apiSuccess="apiSuccess"/>
                     
                     
                     <div v-else class="col-sm-12 col-md-6 col-lg-4 col-xl-3"  v-for="(property, index) in properties">
