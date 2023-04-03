@@ -20,7 +20,7 @@ export default {
                 <div class="navbar-collapse col-4" id="navbarText">
                     <ul class="navbar-nav m-auto">
                         <li class="nav-item button-nav px-3 py-2">
-                            <router-link @click="resetStore(), store.getBack = ''" :to="{ name: 'home' }" class="text-decoration-none color-a fw-bold"> <i class="fa-solid fa-house"></i> <font-awesome-icon icon="fa-solid fa-house" class=""/><span class="d-none d-md-inline"> Home</span> </router-link>
+                            <router-link :to="{ name: 'home' }" class="text-decoration-none color-a fw-bold"> <i class="fa-solid fa-house"></i> <font-awesome-icon icon="fa-solid fa-house" class=""/><span class="d-none d-md-inline"> Home</span> </router-link>
                         </li>
                         <li v-if="store.getBack == 'search'" class="nav-item button-nav px-3 py-2 ms-3">
                             <router-link @click="store.getBack = ''" :to="{ name: store.getBack }" class="text-decoration-none color-a fw-bold"> <i class="fa-solid fa-house"></i><font-awesome-icon icon="fa-solid fa-arrow-left" /></router-link>
