@@ -2,7 +2,7 @@
 export default {
     props:[
         'invalidAddress',
-        'apibho'
+        'apiSuccess'
     ],
     data() {
         return {
@@ -15,10 +15,10 @@ export default {
 
 <template >
     <div class="col-12 text-center align-content-center">
-        <img v-if="!apibho || invalidAddress.length === 0" src="../../assets/Bool_icon.png" alt="logo">
-        <h2 v-if="!apibho">{{ invalidAddress }} &#128533;</h2>
+        <img v-if="!apiSuccess || invalidAddress.length === 0" src="../../assets/Bool_icon.png" alt="logo">
+        <h2 v-if="!apiSuccess">{{ invalidAddress }} &#128533;</h2>
         <h2 v-if="invalidAddress.length === 0">Spiacenti ma non ci sono proprietá per la posizione inserita &#128533;</h2>
-        <router-link v-if="invalidAddress.length === 0 || !apibho" :to="{ name: 'home'}" class="btn outline-button"> <i class="fa-solid fa-house"></i> Torna alla home </router-link>
+        <router-link v-if="invalidAddress.length === 0 || !apiSuccess" :to="{ name: 'home'}" class="btn outline-button"> <i class="fa-solid fa-house"></i> Torna alla home </router-link>
     </div>
     
 </template>
