@@ -40,7 +40,7 @@ export default {
         </div>
         <div class="d-flex align-items-center justify-content-between p-1">
           <h3 class="fs-6 fw-bold mb-0 h-100">{{ (property.address.split('-')[1]) ? property.address.split('-')[1] : property.address.split(' ').slice(-1)[0] }}</h3>
-          <h3 v-if="property.distance" class="fs-6 text-muted mb-0 h-100"> {{ property.distance }} km</h3>
+          <h3 v-if="property.distance !== undefined" class="fs-6 text-muted mb-0 h-100"> {{ property.distance }} km</h3>
           <div class="h-100"><strong>{{ property.night_price }}&euro;</strong> notte</div>
         </div>
         <div>
