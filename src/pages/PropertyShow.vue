@@ -90,7 +90,7 @@ export default {
             <!-- details -->
             <ShowDetails :property="property"/>
             
-            <div class="col-12 col-md-8 offset-md-3 col-lg-4 offset-lg-0">
+            <div class="col-12 col-md-8 offset-md-2 col-lg-4 offset-lg-0">
                 <!-- MAP -->
                 <GeoMap :lon="property.longitude" :lat="property.latitude"/>
 
