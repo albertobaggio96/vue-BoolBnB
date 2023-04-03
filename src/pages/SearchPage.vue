@@ -132,16 +132,11 @@ export default {
         <section id="filtered-property">
             <div class="container">
                 <div class="row">
-                    <EmptySearch :invalidAddress="this.properties" :apibho="apiSuccess"/>
                     <LoaderLogo v-if="properties === null"/>
                     
-                    <div v-else-if="properties.length === 0 ">
-                        
-                    </div>
-                    <div v-else-if="!apiSuccess">
-                        
-                    </div>
-
+                    <EmptySearch v-else-if="properties.length < 1 || !apiSuccess" :invalidAddress="this.properties" :apiSuccess="apiSuccess"/>
+                    
+                    
                     <div v-else class="col-sm-12 col-md-6 col-lg-4 col-xl-3"  v-for="(property, index) in properties">
                       <CardProperty :property="property" @showSlug="getShowParams" :key="index"/>
                     </div>
